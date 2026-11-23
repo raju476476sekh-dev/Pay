@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/pay", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/:path*", "destination": "/api/app?path=:path*" }
+  ]
+}
