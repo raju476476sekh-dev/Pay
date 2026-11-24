@@ -243,7 +243,7 @@ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeT
 function fb(t){var a=$('adr');a.value=t;a.select();try{document.execCommand('copy')}catch(e){}a.value=addr}
 function draw(){$('big').textContent='$'+(amt||'0');var v=parseFloat(amt);$('go').disabled=!(v>0);$('go').textContent=v>0?'Pay $'+v.toFixed(2):'Pay'}
 $('kp').onclick=function(e){var k=e.target.getAttribute('data-k');if(k==null)return;$('er').hidden=true;
-if(k==='b')amt=amt.slice(0,-1);else if(k==='.'){if(amt.indexOf('.')<0)amt=(amt||'0')+'.'}else{if(/\\.\\d\\d$/.test(amt)||amt.length>=8)return;amt=amt==='0'?k:amt+k}draw()};
+if(k==='b')amt=amt.slice(0,-1);else if(k==='.'){if(amt.indexOf('.')<0)amt=(amt||'0')+'.'}else{if(/\.\d\d$/.test(amt)||amt.length>=8)return;amt=amt==='0'?k:amt+k}draw()};
 function tick(){var s=Math.max(0,Math.round((exp-Date.now())/1000)),h=Math.floor(s/3600),m=Math.floor(s%3600/60);$('cd').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
 function end(j){stop();if(j.st==='paid'){$('amt').textContent='We received $'+Number(j.usd).toFixed(2)+'. Thank you.';show('s3')}else{$('cd').textContent='00:00:00';$('stt').textContent='This invoice expired. Start over to create a new one.';$('pay').hidden=true}}
 function note(j){var t='Waiting for your payment...';if(j.tx)t=j.conf>0?'Payment found. Waiting for confirmations: '+j.conf+' of '+j.need+'.':'Payment found on the network. Waiting for the first confirmation (0 of '+j.need+').';$('stt').textContent=t}
@@ -258,6 +258,7 @@ $('pay').hidden=false;$('stt').textContent='Waiting for your payment...';show('s
 }).catch(function(e){er.textContent=e.message||'Something went wrong.';er.hidden=false}).then(function(){b.disabled=false;draw()})};
 $('cpa').onclick=function(){copy(addr,this,'Copy address')};
 $('cpb').onclick=function(){copy(btc,this,'Copy amount')};
+$('oc').onclick=function(){var b=this;copy(addr,b,'Open Cash App');setTimeout(function(){location.href='cashme://';setTimeout(function(){if(!document.hidden)location.href='https://cash.app'},1500)},300)};
 function again(){stop();amt='';draw();show('s1')}
 $('again').onclick=again;$('again2').onclick=again;draw();`;
 
@@ -281,8 +282,9 @@ function payPage(slug, link, req) {
     '<div id="pay"><button class="sec" id="cpb" type="button">Copy amount</button>' +
     '<div class="qr"><div id="qr"></div></div><p class="mu">Scan with your Bitcoin wallet and send on the <b>Bitcoin network</b> (on-chain).</p>' +
     '<textarea id="adr" readonly aria-label="Bitcoin address" style="height:64px;margin-top:8px"></textarea><button class="sec" id="cpa" type="button">Copy address</button>' +
+    '<button class="pri" id="oc" type="button" style="background:#fff;color:#0a0f0d">Open Cash App</button>' +
     '<a class="pri" id="ow" href="#" style="display:block;text-align:center;text-decoration:none">Open in wallet</a>' +
-    '<h2>How to pay</h2><ol class="steps" style="text-align:left"><li>Open your Bitcoin wallet or exchange and choose <b>Send</b> (or Withdraw).</li><li>Scan the QR code, or paste the address.</li><li>Choose the <b>Bitcoin (BTC)</b> network (on-chain).</li><li>Send the <b>exact amount</b> shown above. A different amount cannot be matched automatically.</li><li>Keep this page open. It shows <b>Payment complete</b> after the network confirms your payment.</li></ol>' +
+    '<h2>How to pay</h2><ol class="steps" style="text-align:left"><li>Open your Bitcoin wallet or exchange and choose <b>Send</b> (or Withdraw).</li><li>In Cash App: tap <b>Open Cash App</b> (the address is copied), go to Bitcoin, Send, then paste the address and enter the exact amount.</li><li>Choose the <b>Bitcoin (BTC)</b> network (on-chain).</li><li>Send the <b>exact amount</b> shown above. A different amount cannot be matched automatically.</li><li>Keep this page open. It shows <b>Payment complete</b> after the network confirms your payment.</li></ol>' +
     '<p class="mu">This invoice is valid for 2 hours. Each confirmation usually takes 10 to 20 minutes.</p></div>' +
     '<button class="sec" id="again" type="button">Start over</button></section>' +
     '<section id="s3" class="panel c" hidden><div class="ico" style="font-size:2.2rem">&#10003;</div><h1 style="color:var(--ac)">Payment complete</h1><p class="mu" id="amt"></p><button class="sec" id="again2" type="button">Make another payment</button></section>' +
