@@ -595,7 +595,7 @@ module.exports = async (req, res) => {
       if (!v) return json(404, { error: "Invoice not found. Copy the invoice ID from the Invoice column." });
       const r = JSON.parse(v);
       if (r.st === "paid") return json(400, { error: "That invoice is already paid." });
-      if (o.conf < needOf(r)) return json(400, { error: "This payment has " + o.conf + " of " + needOf(r) + " confirmations. Try again later." });
+      // Admin manual assign: allowed at ANY confirmation depth (even 0 / unconfirmed), the admin takes responsibility.
       if (!(await db(["SET", "tx:" + o.txid + ":" + o.vout, r.id, "NX"]))) return json(400, { error: "This payment was already used for another invoice." });
       await settle(r, true, { tx: o.txid, vout: o.vout, recv: o.sats, conf: o.conf, manual: true });
       return json(200, { ok: 1 });
