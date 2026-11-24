@@ -396,7 +396,7 @@ var dc=el('td'),dbn=el('button','DONE');dbn.type='button';dbn.className='dnb'+(x
 dbn.onclick=function(){var nv=!x.done;x.done=nv;dbn.className='dnb'+(nv?' on':'');
 api('POST','/api/invoice/done',{id:x.id,done:nv}).catch(function(e){x.done=!nv;dbn.className='dnb'+(x.done?' on':'');alert(e.message)})};
 dc.appendChild(dbn);r.appendChild(dc);H.appendChild(r)})}
-function icell(x){var c=el('td');c.appendChild(el('div',x.btc+' BTC','pw'));var d=el('div',x.id,'pw mu');d.style.fontSize='.75rem';c.appendChild(d);
+function icell(x){var c=el('td');var u=el('div','$'+x.usd.toFixed(2));u.style.fontWeight='800';c.appendChild(u);var bt=el('div',x.btc+' BTC','pw mu');bt.style.fontSize='.75rem';c.appendChild(bt);var d=el('div',x.id,'pw mu');d.style.fontSize='.75rem';c.appendChild(d);
 if(x.tx){var l=el('a','tx '+x.tx.slice(0,8)+'...'+x.tx.slice(-6));l.href='https://mempool.space/tx/'+x.tx;l.target='_blank';l.rel='noopener noreferrer';l.style.fontSize='.75rem';c.appendChild(l)}
 if(x.st==='pending'&&x.tx)c.appendChild(el('div','confirming '+(x.conf||0)+'/'+(x.need||2),'mu'));
 return c}
