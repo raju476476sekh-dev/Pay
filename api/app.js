@@ -135,7 +135,73 @@ function ogRender(name) {
   return encodePng(W, H, out);
 }
 
-const CSS = `:root{--bg:#070d0a;--ink:#edf6f0;--mu:#8ea399;--ln:#25352c;--fd:#101914;--ac:#1ed760;--er:#ff7b72;--gd:#d9b45a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 520px at 50% -8%,#10301e,var(--bg));background-color:var(--bg);color:var(--ink);font:16px/1.5 "Avenir Next","Segoe UI",system-ui,sans-serif;padding:18px 14px 48px;display:flex;justify-content:center;min-height:100vh}main{width:100%;max-width:460px}main.w{max-width:900px}h1{font-size:1.7rem;line-height:1.2;margin:0 0 6px;overflow-wrap:anywhere}h2{font-size:1.05rem;margin:26px 0 8px}.mu{color:var(--mu);overflow-wrap:anywhere;font-size:.85rem}p.mu{font-size:1rem}input,select{width:100%;font:inherit;font-size:1.1rem;font-weight:600;padding:12px 14px;border:1.5px solid var(--ln);border-radius:14px;background:#0b130f;color:var(--ink)}select{font-size:1rem;margin-bottom:10px}input:focus{outline:2px solid var(--ac)}button{font:inherit;font-weight:700;border-radius:12px;padding:12px;cursor:pointer;border:1.5px solid var(--ln);background:transparent;color:var(--ink)}button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}.pri{width:100%;background:var(--ac);border:0;color:#04130a;margin-top:14px;padding:16px;font-size:1.1rem;border-radius:18px}.pri:disabled{background:#2a4434;color:#6f8a7a;cursor:default}.sec{width:100%;margin-top:10px;border-radius:16px;padding:14px;border-color:#2f4a3a}.er{color:var(--er);font-weight:600}.c{text-align:center}.panel{background:linear-gradient(180deg,#121d17,#0d1511);border:1px solid var(--ln);border-radius:28px;padding:22px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55)}.pill{display:inline-block;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:6px 18px;font-weight:700}.meth{background:#131f18;border:1px solid var(--ln);border-radius:22px;padding:20px;text-align:center;margin:16px 0}.ico{width:68px;height:68px;border-radius:20px;background:#00c853;color:#04130a;font:800 2.4rem/68px Georgia,serif;margin:0 auto 10px;box-shadow:0 0 44px #00c85345}.big{font-size:3.6rem;font-weight:800;text-align:center;line-height:1.1;overflow-wrap:anywhere}.usd{text-align:center;letter-spacing:.2em;color:var(--mu);font-weight:700;margin-bottom:16px}.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kp button{height:60px;font-size:1.6rem;padding:0;border-radius:18px;background:#131f18}.kp button:active{background:#1d3226}.kp svg{pointer-events:none}.qr{background:#fff;padding:14px;border-radius:18px;width:max-content;max-width:100%;margin:16px auto}.facts{text-align:center}.cd{display:inline-block;border:1px solid var(--ln);background:#0b130f;border-radius:99px;padding:4px 16px;font-weight:800;font-variant-numeric:tabular-nums}.steps{background:#0d1611;border:1px solid var(--ln);border-radius:18px;padding:14px 16px 14px 34px;margin:6px 0}.steps li{margin:6px 0}textarea{width:100%;height:80px;font:.78rem monospace;word-break:break-all;background:#0b130f;color:var(--ink);border:1.5px solid var(--ln);border-radius:12px;padding:10px}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--ln);vertical-align:top}th{color:var(--mu);font-weight:600}td button{padding:5px 10px;font-size:.85rem}.card{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:16px;margin:16px 0}.card h2{margin-top:0}#nf input,#uf input{margin-bottom:10px;font-size:1rem}.sw{display:flex;gap:10px;margin:4px 0 6px}.swb{width:34px;height:34px;padding:0;border-radius:50%;border:2px solid var(--ln)}.swb.on{border-color:var(--ink);outline:2px solid var(--bg);outline-offset:-5px}.lk{background:var(--fd);border:1px solid var(--ln);border-left:8px solid var(--ln);border-radius:14px;padding:12px 14px;margin-bottom:12px;overflow-wrap:anywhere}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btns button,.top button{padding:6px 12px;font-size:.85rem}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.bar{height:8px;border-radius:99px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.stat{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:14px}.stat b{display:block;font-size:1.5rem;margin-top:2px}.stat.hi{background:linear-gradient(135deg,#1a3a25,#101914);border-color:#3a6a4a}.stat.hi b{color:var(--gd)}.b{padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:#fff}.b.paid{background:#168a4a}.b.pending{background:#9a6b00}.b.expired{background:#b3261e}[hidden]{display:none!important}body.adm{display:block;padding:0}body.adm main{max-width:none}#login{max-width:420px;margin:0 auto;padding:48px 14px}.brand{font-weight:800;letter-spacing:.06em;font-size:1.15rem;line-height:1.15}.brand small{display:block;font-size:.72rem;letter-spacing:.32em;color:var(--ac);margin-top:5px}.shell{display:flex;min-height:100vh}.side{width:250px;flex:none;background:#0a110d;border-right:1px solid var(--ln);display:flex;flex-direction:column;padding:22px 14px;position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto}.rl{align-self:flex-start;margin:14px 0 20px;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:3px 12px;font-size:.78rem;font-weight:700}.side nav{display:flex;flex-direction:column;gap:6px}.nv{text-align:left;border:0;padding:12px 14px;border-radius:12px;color:var(--mu);background:transparent}.nv:hover{color:var(--ink)}.nv.on{background:#13261b;color:var(--ink);box-shadow:inset 3px 0 0 var(--ac)}.me{margin-top:auto;border-top:1px solid var(--ln);padding-top:14px;font-size:.85rem;overflow-wrap:anywhere}.me div{margin-bottom:6px}.me button{padding:5px 10px;font-size:.8rem}#out{margin-top:6px}.pw{font-family:ui-monospace,Menlo,Consolas,monospace}.cont{flex:1;min-width:0;padding:24px 22px 56px;max-width:1000px}.mbar{display:none}.tw{overflow-x:auto}.flt{display:flex;gap:10px;flex-wrap:wrap}.flt select{width:auto;min-width:180px}.flt select[hidden]{display:none}@media(max-width:760px){.side{position:fixed;left:0;top:0;bottom:0;height:auto;z-index:30;transform:translateX(-100%);transition:transform .2s;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px))}.side.open{transform:none;box-shadow:0 0 60px rgba(0,0,0,.7)}.mbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}.mbar button{padding:8px 14px}.cont{padding:14px 14px 56px}}.brand{cursor:pointer}.amtb{font:800 1.55rem ui-monospace,Menlo,Consolas,monospace;color:var(--ac);overflow-wrap:anywhere;margin-top:2px}.big{border:1px solid #1f5a37;background:linear-gradient(135deg,#0f2a1b,#0b1a12);border-radius:20px;padding:22px 20px;margin-bottom:22px}.big b{display:block;font-size:2.8rem;line-height:1.15;margin:4px 0}.dnb{background:#fff;color:#04130a;border:0;font-weight:800;padding:7px 14px;border-radius:10px;letter-spacing:.04em}.dnb.on{background:#1ed760;color:#04130a}.dov{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:40}.dr{position:fixed;left:0;top:0;bottom:0;width:min(380px,90vw);z-index:50;background:linear-gradient(180deg,#0d1a13,#070d0a);border-right:1px solid #24402f;transform:translateX(-102%);transition:transform .25s;overflow-y:auto;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 0 70px rgba(0,0,0,.7)}.dr.open{transform:none}.drx{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border-radius:50%;font-size:1.3rem;line-height:1}.dk{font-size:.7rem;letter-spacing:.28em;color:#5fe39a;font-weight:700;margin:28px 0 8px}.dr h3{margin:0 0 6px;font-size:1.2rem;line-height:1.4}.wa{display:block;text-align:center;text-decoration:none;margin-top:16px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#25d366,#128c4a);color:#04140a;font-weight:800;font-size:1.05rem;box-shadow:0 8px 28px rgba(37,211,102,.25)}.wa small{display:block;font-weight:600;opacity:.8;margin-top:2px;letter-spacing:.06em}.promo{margin-top:28px;border-radius:20px;padding:1px;background:linear-gradient(135deg,#f7d774,#a8741a 45%,#f7d774)}.pin{border-radius:19px;padding:24px 18px;background:radial-gradient(120% 90% at 0% 0%,#2a2108,#0c0a04 70%);text-align:center}.pk{color:#f7d774;font-size:.7rem;letter-spacing:.32em;font-weight:700}.pt{font-size:2.1rem;font-weight:900;letter-spacing:.04em;margin:8px 0 14px;background:linear-gradient(180deg,#fff2b8,#e0a93a);-webkit-background-clip:text;background-clip:text;color:transparent}.bd{display:flex;gap:10px;justify-content:center;margin-bottom:16px}.bd span{min-width:64px;padding:9px 0;border-radius:12px;border:1px solid #8a6a1f;background:#1a1405;color:#f7d774;font-weight:800;letter-spacing:.08em}.pin p{margin:0 0 18px;color:#e9dcae;line-height:1.55}.gold{display:block;text-decoration:none;padding:13px;border-radius:14px;background:linear-gradient(135deg,#f7d774,#d19a2a);color:#241a02;font-weight:800}.sfb{padding:8px 16px;border-radius:99px;font-size:.9rem;color:var(--mu)}.sfb.on{background:#13261b;color:var(--ink);border-color:var(--ac)}`;
+const CSS = `:root{--bg:#070d0a;--ink:#edf6f0;--mu:#8ea399;--ln:#25352c;--fd:#101914;--ac:#1ed760;--er:#ff7b72;--gd:#d9b45a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 520px at 50% -8%,#10301e,var(--bg));background-color:var(--bg);color:var(--ink);font:16px/1.5 "Avenir Next","Segoe UI",system-ui,sans-serif;padding:18px 14px 48px;display:flex;justify-content:center;min-height:100vh}main{width:100%;max-width:460px}main.w{max-width:900px}h1{font-size:1.7rem;line-height:1.2;margin:0 0 6px;overflow-wrap:anywhere}h2{font-size:1.05rem;margin:26px 0 8px}.mu{color:var(--mu);overflow-wrap:anywhere;font-size:.85rem}p.mu{font-size:1rem}input,select{width:100%;font:inherit;font-size:1.1rem;font-weight:600;padding:12px 14px;border:1.5px solid var(--ln);border-radius:14px;background:#0b130f;color:var(--ink)}select{font-size:1rem;margin-bottom:10px}input:focus{outline:2px solid var(--ac)}button{font:inherit;font-weight:700;border-radius:12px;padding:12px;cursor:pointer;border:1.5px solid var(--ln);background:transparent;color:var(--ink)}button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}.pri{width:100%;background:var(--ac);border:0;color:#04130a;margin-top:14px;padding:16px;font-size:1.1rem;border-radius:18px}.pri:disabled{background:#2a4434;color:#6f8a7a;cursor:default}.sec{width:100%;margin-top:10px;border-radius:16px;padding:14px;border-color:#2f4a3a}.er{color:var(--er);font-weight:600}.c{text-align:center}.panel{background:linear-gradient(180deg,#121d17,#0d1511);border:1px solid var(--ln);border-radius:28px;padding:22px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55)}.pill{display:inline-block;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:6px 18px;font-weight:700}.meth{background:#131f18;border:1px solid var(--ln);border-radius:22px;padding:20px;text-align:center;margin:16px 0}.ico{width:68px;height:68px;border-radius:20px;background:#00c853;color:#04130a;font:800 2.4rem/68px Georgia,serif;margin:0 auto 10px;box-shadow:0 0 44px #00c85345}.big{font-size:3.6rem;font-weight:800;text-align:center;line-height:1.1;overflow-wrap:anywhere}.usd{text-align:center;letter-spacing:.2em;color:var(--mu);font-weight:700;margin-bottom:16px}.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kp button{height:60px;font-size:1.6rem;padding:0;border-radius:18px;background:#131f18}.kp button:active{background:#1d3226}.kp svg{pointer-events:none}.qr{background:#fff;padding:14px;border-radius:18px;width:max-content;max-width:100%;margin:16px auto}.facts{text-align:center}.cd{display:inline-block;border:1px solid var(--ln);background:#0b130f;border-radius:99px;padding:4px 16px;font-weight:800;font-variant-numeric:tabular-nums}.steps{background:#0d1611;border:1px solid var(--ln);border-radius:18px;padding:14px 16px 14px 34px;margin:6px 0}.steps li{margin:6px 0}textarea{width:100%;height:80px;font:.78rem monospace;word-break:break-all;background:#0b130f;color:var(--ink);border:1.5px solid var(--ln);border-radius:12px;padding:10px}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--ln);vertical-align:top}th{color:var(--mu);font-weight:600}td button{padding:5px 10px;font-size:.85rem}.card{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:16px;margin:16px 0}.card h2{margin-top:0}#nf input,#uf input{margin-bottom:10px;font-size:1rem}.sw{display:flex;gap:10px;margin:4px 0 6px}.swb{width:34px;height:34px;padding:0;border-radius:50%;border:2px solid var(--ln)}.swb.on{border-color:var(--ink);outline:2px solid var(--bg);outline-offset:-5px}.lk{background:var(--fd);border:1px solid var(--ln);border-left:8px solid var(--ln);border-radius:14px;padding:12px 14px;margin-bottom:12px;overflow-wrap:anywhere}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btns button,.top button{padding:6px 12px;font-size:.85rem}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.bar{height:8px;border-radius:99px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.stat{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:14px}.stat b{display:block;font-size:1.5rem;margin-top:2px}.stat.hi{background:linear-gradient(135deg,#1a3a25,#101914);border-color:#3a6a4a}.stat.hi b{color:var(--gd)}.b{padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:#fff}.b.paid{background:#168a4a}.b.pending{background:#9a6b00}.b.expired{background:#b3261e}[hidden]{display:none!important}body.adm{display:block;padding:0}body.adm main{max-width:none}#login{max-width:420px;margin:0 auto;padding:48px 14px}.brand{font-weight:800;letter-spacing:.06em;font-size:1.15rem;line-height:1.15}.brand small{display:block;font-size:.72rem;letter-spacing:.32em;color:var(--ac);margin-top:5px}.shell{display:flex;min-height:100vh}.side{width:250px;flex:none;background:#0a110d;border-right:1px solid var(--ln);display:flex;flex-direction:column;padding:22px 14px;position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto}.rl{align-self:flex-start;margin:14px 0 20px;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:3px 12px;font-size:.78rem;font-weight:700}.side nav{display:flex;flex-direction:column;gap:6px}.nv{text-align:left;border:0;padding:12px 14px;border-radius:12px;color:var(--mu);background:transparent}.nv:hover{color:var(--ink)}.nv.on{background:#13261b;color:var(--ink);box-shadow:inset 3px 0 0 var(--ac)}.me{margin-top:auto;border-top:1px solid var(--ln);padding-top:14px;font-size:.85rem;overflow-wrap:anywhere}.me div{margin-bottom:6px}.me button{padding:5px 10px;font-size:.8rem}#out{margin-top:6px}.pw{font-family:ui-monospace,Menlo,Consolas,monospace}.cont{flex:1;min-width:0;padding:24px 22px 56px;max-width:1000px}.mbar{display:none}.tw{overflow-x:auto}.flt{display:flex;gap:10px;flex-wrap:wrap}.flt select{width:auto;min-width:180px}.flt select[hidden]{display:none}@media(max-width:760px){.side{position:fixed;left:0;top:0;bottom:0;height:auto;z-index:30;transform:translateX(-100%);transition:transform .2s;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px))}.side.open{transform:none;box-shadow:0 0 60px rgba(0,0,0,.7)}.mbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}.mbar button{padding:8px 14px}.cont{padding:14px 14px 56px}}.brand{cursor:pointer}.amtb{font:800 1.55rem ui-monospace,Menlo,Consolas,monospace;color:var(--ac);overflow-wrap:anywhere;margin-top:2px}.big{border:1px solid #1f5a37;background:linear-gradient(135deg,#0f2a1b,#0b1a12);border-radius:20px;padding:22px 20px;margin-bottom:22px}.big b{display:block;font-size:2.8rem;line-height:1.15;margin:4px 0}.dnb{background:#fff;color:#04130a;border:0;font-weight:800;padding:7px 14px;border-radius:10px;letter-spacing:.04em}.dnb.on{background:#1ed760;color:#04130a}.dov{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:40}.dr{position:fixed;left:0;top:0;bottom:0;width:min(380px,90vw);z-index:50;background:linear-gradient(180deg,#0d1a13,#070d0a);border-right:1px solid #24402f;transform:translateX(-102%);transition:transform .25s;overflow-y:auto;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 0 70px rgba(0,0,0,.7)}.dr.open{transform:none}.drx{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border-radius:50%;font-size:1.3rem;line-height:1}.dk{font-size:.7rem;letter-spacing:.28em;color:#5fe39a;font-weight:700;margin:28px 0 8px}.dr h3{margin:0 0 6px;font-size:1.2rem;line-height:1.4}.wa{display:block;text-align:center;text-decoration:none;margin-top:16px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#25d366,#128c4a);color:#04140a;font-weight:800;font-size:1.05rem;box-shadow:0 8px 28px rgba(37,211,102,.25)}.wa small{display:block;font-weight:600;opacity:.8;margin-top:2px;letter-spacing:.06em}.promo{margin-top:28px;border-radius:20px;padding:1px;background:linear-gradient(135deg,#f7d774,#a8741a 45%,#f7d774)}.pin{border-radius:19px;padding:24px 18px;background:radial-gradient(120% 90% at 0% 0%,#2a2108,#0c0a04 70%);text-align:center}.pk{color:#f7d774;font-size:.7rem;letter-spacing:.32em;font-weight:700}.pt{font-size:2.1rem;font-weight:900;letter-spacing:.04em;margin:8px 0 14px;background:linear-gradient(180deg,#fff2b8,#e0a93a);-webkit-background-clip:text;background-clip:text;color:transparent}.bd{display:flex;gap:10px;justify-content:center;margin-bottom:16px}.bd span{min-width:64px;padding:9px 0;border-radius:12px;border:1px solid #8a6a1f;background:#1a1405;color:#f7d774;font-weight:800;letter-spacing:.08em}.pin p{margin:0 0 18px;color:#e9dcae;line-height:1.55}.gold{display:block;text-decoration:none;padding:13px;border-radius:14px;background:linear-gradient(135deg,#f7d774,#d19a2a);color:#241a02;font-weight:800}.sfb{padding:8px 16px;border-radius:99px;font-size:.9rem;color:var(--mu)}.sfb.on{background:#13261b;color:var(--ink);border-color:var(--ac)}
+/* ===== PREMIUM LUXURY THEME ===== */
+:root{--bg:#06070a;--ink:#f4efe3;--mu:#9a9486;--ln:#262319;--fd:#0e0f13;--ac:#d6b25e;--er:#ff8a80;--gd:#e8c777;--gl:linear-gradient(135deg,#f6e3a1 0%,#d6b25e 48%,#a97c2a 100%)}
+body{background:radial-gradient(1100px 620px at 50% -12%,#201a0b 0%,rgba(6,7,10,0) 62%),radial-gradient(800px 500px at 100% 100%,#0f0d07 0%,rgba(6,7,10,0) 60%),var(--bg);background-color:var(--bg);font-family:"Avenir Next","SF Pro Display","Segoe UI",system-ui,sans-serif;letter-spacing:.005em;-webkit-font-smoothing:antialiased}
+h1,h2,.big b,.stat b,.amtb,.pt{font-family:"Cormorant Garamond","Playfair Display","Didot","Bodoni 72",Georgia,"Times New Roman",serif}
+h1{font-weight:600;letter-spacing:.01em;font-size:2rem}
+h2{font-size:1.25rem;font-weight:600;letter-spacing:.02em;margin:34px 0 12px;display:flex;align-items:center;gap:12px}
+h2:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#3a3017,transparent)}
+.card h2:after,.dr h2:after{display:none}
+input,select,textarea{background:linear-gradient(180deg,#0d0e12,#090a0d);border:1px solid #2c2718;border-radius:12px;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px rgba(214,178,94,.16)}
+button{border:1px solid #33291a;background:linear-gradient(180deg,#14151a,#0d0e12);color:var(--ink);border-radius:11px;transition:transform .15s,border-color .2s,box-shadow .2s,background .2s}
+button:hover{border-color:#6b5a2a;box-shadow:0 6px 22px rgba(214,178,94,.1)}
+button:active{transform:translateY(1px)}
+button:focus-visible{outline:2px solid var(--ac)}
+.pri{background:var(--gl);color:#1a1405;border:0;letter-spacing:.06em;text-transform:uppercase;font-size:1rem;border-radius:14px;box-shadow:0 12px 34px rgba(214,178,94,.22),inset 0 1px 0 rgba(255,255,255,.45)}
+.pri:hover{filter:brightness(1.06);box-shadow:0 16px 44px rgba(214,178,94,.3),inset 0 1px 0 rgba(255,255,255,.45)}
+.pri:disabled{background:#1b1a16;color:#6d675a;box-shadow:none}
+.sec{border-color:#3b3219;border-radius:14px}
+.panel{background:linear-gradient(180deg,rgba(24,22,15,.92),rgba(11,11,14,.96));border:1px solid #3a3017;border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.65),inset 0 1px 0 rgba(246,227,161,.08)}
+.pill,.rl{border:1px solid #6b5a2a;background:linear-gradient(135deg,#1d1808,#0e0c05);color:var(--gd);letter-spacing:.12em;text-transform:uppercase;font-size:.72rem}
+.meth{background:linear-gradient(180deg,#14130f,#0c0c0f);border:1px solid #33291a;border-radius:20px}
+.big{background:linear-gradient(135deg,#1c1709 0%,#0d0d10 70%);border:1px solid #4a3b18;border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(246,227,161,.1)}
+.big b{font-weight:600}
+.usd{color:var(--gd)}
+.kp button{background:linear-gradient(180deg,#15161b,#0d0e12);border:1px solid #2c2718;border-radius:16px}
+.kp button:active{background:#1d1a10}
+.qr{border-radius:16px;box-shadow:0 0 0 1px #6b5a2a,0 18px 50px rgba(0,0,0,.55)}
+.cd{background:#0b0b0e;border-color:#4a3b18;color:var(--gd)}
+.steps{background:#0c0c0f;border-color:#2c2718;border-radius:16px}
+th{color:var(--gd);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #3a3017}
+td,th{border-bottom:1px solid #1c1a12;padding:12px 8px}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:rgba(214,178,94,.045)}
+.tw{border:1px solid #2a2415;border-radius:16px;padding:4px 10px;background:linear-gradient(180deg,rgba(18,17,12,.7),rgba(10,10,13,.7))}
+.card{background:linear-gradient(180deg,#121116,#0c0c10);border:1px solid #2e2819;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.lk{background:linear-gradient(180deg,#121116,#0c0c10);border:1px solid #2a2415;border-left-width:6px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.grid{gap:14px}
+.stat{background:linear-gradient(180deg,#131217,#0c0c10);border:1px solid #2c2718;border-radius:18px;padding:18px 16px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.stat .mu{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
+.stat b{font-size:1.9rem;font-weight:600;margin-top:6px}
+.stat.hi{background:linear-gradient(135deg,#221b09,#0e0d0b 75%);border-color:#6b5a2a;box-shadow:0 18px 50px rgba(214,178,94,.1),inset 0 1px 0 rgba(246,227,161,.14)}
+.stat.hi b{background:var(--gl);-webkit-background-clip:text;background-clip:text;color:transparent}
+.b{letter-spacing:.08em;text-transform:uppercase;font-size:.66rem;padding:4px 12px;border:1px solid transparent}
+.b.paid{background:rgba(31,157,85,.16);color:#6fe0a0;border-color:rgba(31,157,85,.45)}
+.b.pending{background:rgba(214,178,94,.14);color:#e8c777;border-color:rgba(214,178,94,.42)}
+.b.expired{background:rgba(220,70,60,.14);color:#ff9a90;border-color:rgba(220,70,60,.4)}
+.brand{font-family:"Cormorant Garamond","Playfair Display",Georgia,serif;font-weight:700;font-size:1.3rem;letter-spacing:.14em;background:var(--gl);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand small{-webkit-text-fill-color:var(--mu);color:var(--mu);letter-spacing:.38em;font-family:system-ui,sans-serif}
+.side{background:linear-gradient(180deg,#0b0b0f,#07080b);border-right:1px solid #2a2415}
+.nv{letter-spacing:.04em;border:0;background:transparent;box-shadow:none}
+.nv:hover{color:var(--gd);background:rgba(214,178,94,.05);box-shadow:none}
+.nv.on{background:linear-gradient(90deg,rgba(214,178,94,.16),rgba(214,178,94,.02));color:var(--gd);box-shadow:inset 3px 0 0 var(--ac)}
+.me{border-top:1px solid #2a2415}
+.cont{padding:30px 28px 64px}
+.sfb{border-radius:99px;letter-spacing:.06em;color:var(--mu)}
+.sfb.on{background:linear-gradient(135deg,#221b09,#120f06);color:var(--gd);border-color:#6b5a2a}
+.dnb{background:var(--gl);color:#1a1405}
+.dnb.on{background:linear-gradient(135deg,#2bd47a,#14904a);color:#031208}
+.amtb{color:var(--gd);font-weight:600}
+.dr{background:linear-gradient(180deg,#0d0d11,#06070a);border-right:1px solid #3a3017}
+.dk{color:var(--gd)}
+::selection{background:rgba(214,178,94,.35)}
+::-webkit-scrollbar{height:8px;width:8px}
+::-webkit-scrollbar-thumb{background:#2e2819;border-radius:99px}
+@media(max-width:760px){.cont{padding:16px 14px 56px}h1{font-size:1.7rem}.stat b{font-size:1.6rem}}
+`;
 
 const head = (t, extra) => '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#070d0a"><title>' + esc(t) + "</title>" + (extra || "") + "<style>" + CSS + "</style></head><body><main>";
 const tail = (s) => "</main>" + s + "</body></html>";
@@ -204,7 +270,12 @@ async function settle(r, paid, extra) {
       const c = Math.round(r.usd * 100); let fee = 0;
       if (r.owner !== "admin") {
         const x = await db(["HGET", "users", r.owner]);
-        if (x) { fee = Math.round(c * (+JSON.parse(x).fee || 0) / 100); await db(["HINCRBY", "bal", r.owner, c - fee]); } else fee = c;
+        if (!x) fee = c; // user was deleted: everything goes to admin
+        else {
+          const bc = r.base > 0 ? Math.round(r.base * 100) : c; // sub user always gets the selected amount, nothing is deducted
+          fee = 0; // the extra % stays in the wallet only, it is not added to any dashboard balance
+          await db(["HINCRBY", "bal", r.owner, bc]);
+        }
       }
       await db(["HINCRBY", "bal", "admin", r.owner === "admin" ? c : fee]);
     }
@@ -251,7 +322,7 @@ function poll(){fetch('/api/check?id='+iid).then(function(r){return r.json()}).t
 $('go').onclick=function(){var er=$('er');er.hidden=true;var usd=parseFloat(amt);if(!(usd>0))return;
 var b=$('go');b.disabled=true;b.textContent='Creating invoice...';
 fetch('/api/invoice',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug:SLUG,usd:usd})}).then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'Error');return j})}).then(function(j){
-iid=j.id;exp=j.exp;addr=j.addr;btc=j.btc;$('top').textContent='$'+usd.toFixed(2);$('btcv').textContent=j.btc+' BTC';$('adr').value=j.addr;$('ow').href=j.uri;
+iid=j.id;exp=j.exp;addr=j.addr;btc=j.btc;$('top').textContent='$'+Number(j.usd||usd).toFixed(2);$('btcv').textContent=j.btc+' BTC';$('adr').value=j.addr;$('ow').href=j.uri;
 $('rate').textContent='1 BTC = $'+Math.round(j.price).toLocaleString()+'. The payment completes after '+j.need+' network confirmations.';
 var q=$('qr');q.innerHTML='';if(window.QRCode)new QRCode(q,{text:j.uri,width:240,height:240,correctLevel:QRCode.CorrectLevel.M});
 $('pay').hidden=false;$('stt').textContent='Waiting for your payment...';show('s2');tick();stop();tm=setInterval(tick,1000);pt=setInterval(poll,10000)
@@ -269,7 +340,7 @@ function payPage(slug, link, req) {
   const m = (k, v) => '<meta ' + k + ' content="' + esc(v) + '">';
   const og = m('property="og:title"', "Pay " + name) + m('property="og:description"', link.note || "Secure payment with Bitcoin.") + m('property="og:type"', "website") + m('property="og:url"', url) + m('property="og:image"', img) + m('property="og:image:type"', "image/png") + m('property="og:image:width"', "1200") + m('property="og:image:height"', "630") + m('name="twitter:card"', "summary_large_image") + m('name="twitter:image"', img);
   const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0"].map((k) => '<button type="button" data-k="' + k + '">' + k + "</button>").join("") +
-    '<button type="button" data-k="b" aria-label="Delete"><svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#5fe39a" stroke-width="2.4" stroke-linejoin="round"><path d="M11 2h19a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H11L2 13z"/><path d="M16 8l9 10M25 8l-9 10" stroke-linecap="round"/></svg></button>';
+    '<button type="button" data-k="b" aria-label="Delete"><svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#e8c777" stroke-width="2.4" stroke-linejoin="round"><path d="M11 2h19a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H11L2 13z"/><path d="M16 8l9 10M25 8l-9 10" stroke-linecap="round"/></svg></button>';
   return head(name, og) +
     '<section id="s1" class="panel c"><h1>Pay ' + esc(name) + '</h1><span class="pill">&#10003; Secure Payment</span>' +
     (link.note ? '<p class="mu" style="margin:10px 0 0">' + esc(link.note) + "</p>" : "") +
@@ -310,7 +381,7 @@ $('login').hidden=true;$('app').hidden=false}).catch(function(e){if(e.status===4
 function render(){
 var a=D.me.role==='admin',now=Date.now(),bal=D.bal,tot=0,k;
 function stt(x){return x.st==='pending'&&now>x.exp&&!x.tx?'expired':x.st}
-for(k in bal)tot+=bal[k];
+for(k in bal)tot+=bal[k];if(a)tot-=(D.mwt||0);
 var paid=D.inv.filter(function(x){return x.st==='paid'}),
 pend=D.inv.filter(function(x){return stt(x)==='pending'}),
 expd=D.inv.filter(function(x){return stt(x)==='expired'});
@@ -333,6 +404,12 @@ var unp=a?subT:(bal[D.me.u]||0),wsum=0;D.wd.forEach(function(x){wsum+=x.amt});
 $('unl').textContent=a?'Total unpaid to sub users':'Your unpaid balance';$('unp').textContent=usd(unp);
 $('unr').textContent=(a?'Paid out so far: ':'Received so far: ')+usd(wsum);
 $('wda').hidden=!a;
+$('mwa').hidden=!a;
+if(a){$('mwb').textContent=usd(tot);var MX=$('mwx');MX.innerHTML='';
+btn(MX,'Withdraw amount',function(){mainWd(tot,false)});btn(MX,'Withdraw all',function(){mainWd(tot,true)});
+var MT=$('mwt');MT.innerHTML='';
+if(!D.mw.length){var mr0=el('tr'),mc0=el('td','No main withdrawals yet.','mu');mc0.colSpan=4;mr0.appendChild(mc0);MT.appendChild(mr0)}
+D.mw.forEach(function(x){var r=el('tr');r.appendChild(el('td',new Date(x.t).toLocaleString()));r.appendChild(el('td',usd(x.amt)));r.appendChild(el('td',usd(x.after)));var c=el('td');btn(c,'Undo',function(){if(confirm('Undo this withdrawal? '+usd(x.amt)+' goes back to the main balance.'))askPw('Enter password to undo').then(function(p){if(p===null)return;api('POST','/api/mainwithdraw/undo',{id:x.id,pw:p}).then(load).catch(function(e){alert(e.message)})})});r.appendChild(c);MT.appendChild(r)})}
 var UB=$('ub');UB.innerHTML='';
 if(a){var due=D.users.filter(function(u){return(bal[u.u]||0)>0}).sort(function(x,y){return bal[y.u]-bal[x.u]});
 if(!due.length){var ur2=el('tr'),uc2=el('td','Nothing is unpaid right now.','mu');uc2.colSpan=3;ur2.appendChild(uc2);UB.appendChild(ur2)}
@@ -349,7 +426,7 @@ if(!D.users.length){var ur=el('tr'),uc=el('td','No sub users yet. Add the first 
 D.users.forEach(function(u){var r=el('tr');r.appendChild(el('td',u.u));
 var pc=el('td');pc.appendChild(el('span',sp[u.u]?(u.pw||'(not saved)'):(u.pw?'******':'(not saved)'),'pw'));
 if(u.pw){var tb=btn(pc,sp[u.u]?'Hide':'Show',function(){sp[u.u]=!sp[u.u];render()});tb.style.marginLeft='8px'}
-r.appendChild(pc);r.appendChild(el('td',u.fee+'%'));r.appendChild(el('td',usd(bal[u.u]||0)));
+r.appendChild(pc);r.appendChild(el('td','+'+u.fee+'% on invoice'));r.appendChild(el('td',usd(bal[u.u]||0)));
 var c=el('td'),bx=el('div',null,'btns');bx.style.marginTop='0';
 btn(bx,'Pay',function(){payUser(u.u)});
 btn(bx,'Reset password',function(){var p=prompt('New password for '+u.u+' (6+ characters):');if(p)api('POST','/api/users/password',{u:u.u,password:p}).then(load).catch(function(e){alert(e.message)})});
@@ -361,10 +438,13 @@ var L=$('links');L.innerHTML='';
 if(!D.links.length)L.appendChild(el('p','No links yet. Create your first one above.','mu'));
 D.links.forEach(function(l){var url=location.origin+'/p/'+l.slug,s=st[l.slug]||{n:0,t:0};
 var c=el('div',null,'lk');c.style.borderLeftColor=l.color||COLORS[0];c.appendChild(el('strong',l.name+(a&&l.owner&&l.owner!=='admin'?' ('+l.owner+')':'')));
-if(l.note)c.appendChild(el('div',l.note));c.appendChild(el('div',url,'mu'));c.appendChild(el('div',s.n+' paid - $'+s.t.toFixed(2),'mu'));
+if(l.note)c.appendChild(el('div',l.note));c.appendChild(el('div',url,'mu'));
+if(window.QRCode){var qb=el('div',null,'qrb');qb.style.cssText='background:#fff;padding:8px;border-radius:12px;width:max-content;max-width:100%;margin:12px 0 4px;line-height:0';var qi=el('div');qb.appendChild(qi);try{new QRCode(qi,{text:url,width:132,height:132,correctLevel:QRCode.CorrectLevel.M});c.appendChild(qb)}catch(e){}}
+c.appendChild(el('div',s.n+' paid - $'+s.t.toFixed(2),'mu'));
 var r=el('div',null,'btns');
 btn(r,'Copy link',function(b){navigator.clipboard.writeText(url);b.textContent='Copied'});
 btn(r,'Open',function(){window.open(url,'_blank')});
+btn(r,'Download QR',function(){dlQr(l.name,url)});
 btn(r,'Preview image',function(){window.open('/og/'+l.slug+'.png?v='+l.t+'-c2','_blank')});
 btn(r,'Delete',function(){if(confirm('Remove this link from the dashboard? Anyone who saved the link can still use it to pay.'))api('DELETE','/api/links?slug='+encodeURIComponent(l.slug)).then(load)});
 c.appendChild(r);L.appendChild(c)});
@@ -394,10 +474,10 @@ r.appendChild(el('td',x.name));
 r.appendChild(el('td',x.owner==='admin'?'Main':x.owner));
 r.appendChild(icell(x));
 var dc=el('td'),dbn=el('button','DONE');dbn.type='button';dbn.className='dnb'+(x.done?' on':'');
-dbn.onclick=function(){var nv=!x.done;x.done=nv;dbn.className='dnb'+(nv?' on':'');
-api('POST','/api/invoice/done',{id:x.id,done:nv}).catch(function(e){x.done=!nv;dbn.className='dnb'+(x.done?' on':'');alert(e.message)})};
+dbn.onclick=function(){var nv=!x.done;askPw((nv?'Mark invoice as DONE':'Remove DONE mark')+' - enter password').then(function(p){if(p===null)return;
+api('POST','/api/invoice/done',{id:x.id,done:nv,pw:p}).then(function(){x.done=nv;dbn.className='dnb'+(nv?' on':'')}).catch(function(e){alert(e.message)})})};
 dc.appendChild(dbn);r.appendChild(dc);H.appendChild(r)})}
-function icell(x){var c=el('td');var u=el('div','$'+x.usd.toFixed(2));u.style.fontWeight='800';c.appendChild(u);var bt=el('div',x.btc+' BTC','pw mu');bt.style.fontSize='.75rem';c.appendChild(bt);var d=el('div',x.id,'pw mu');d.style.fontSize='.75rem';c.appendChild(d);
+function icell(x){var c=el('td');var u=el('div','$'+x.usd.toFixed(2));u.style.fontWeight='800';c.appendChild(u);if(x.base>0){var bs=el('div','user gets $'+Number(x.base).toFixed(2)+' + fee $'+(x.usd-x.base).toFixed(2),'mu');bs.style.fontSize='.75rem';c.appendChild(bs)}if(x.btc){var bt=el('div',x.btc+' BTC','pw mu');bt.style.fontSize='.75rem';c.appendChild(bt)}var d=el('div',x.id,'pw mu');d.style.fontSize='.75rem';c.appendChild(d);
 if(x.tx){var l=el('a','tx '+x.tx.slice(0,8)+'...'+x.tx.slice(-6));l.href='https://mempool.space/tx/'+x.tx;l.target='_blank';l.rel='noopener noreferrer';l.style.fontSize='.75rem';c.appendChild(l)}
 if(x.st==='pending'&&x.tx)c.appendChild(el('div','confirming '+(x.conf||0)+'/'+(x.need||2),'mu'));
 return c}
@@ -406,6 +486,27 @@ var p=prompt('Pay how much to '+u+'?\nUnpaid: '+usd(left)+'\nEnter the amount in
 var n=parseFloat(p);if(!(n>0)){alert('Enter a valid amount.');return}
 if(!confirm('Record a payment of $'+n.toFixed(2)+' to '+u+'?\nRemaining unpaid: '+usd(Math.max(0,left-Math.round(n*100)))))return;
 api('POST','/api/withdraw',{u:u,usd:n}).then(load).catch(function(e){alert(e.message)})}
+function dlQr(name,url){if(!window.QRCode){alert('QR could not load. Check your internet and reload the page.');return}
+var h=el('div');h.style.cssText='position:fixed;left:-9999px;top:0';document.body.appendChild(h);
+try{new QRCode(h,{text:url,width:512,height:512,correctLevel:QRCode.CorrectLevel.M})}catch(e){h.remove();alert('Could not create the QR.');return}
+setTimeout(function(){var q=h.querySelector('canvas');if(!q){h.remove();alert('Could not create the QR image.');return}
+var W=640,H=760,cv=document.createElement('canvas');cv.width=W;cv.height=H;var g=cv.getContext('2d');
+g.fillStyle='#fff';g.fillRect(0,0,W,H);g.drawImage(q,64,64,512,512);
+g.textAlign='center';g.fillStyle='#111';g.font='bold 36px Georgia,serif';g.fillText(name.length>26?name.slice(0,25)+'...':name,W/2,650);
+g.fillStyle='#666';g.font='22px sans-serif';g.fillText(url.replace(/^https?:\/\//,''),W/2,700);
+var a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download=(name.replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'')||'link')+'-qr.png';document.body.appendChild(a);a.click();a.remove();h.remove()},80)}
+function askPw(t){return new Promise(function(res){var o=el('div',null,'dov');o.style.cssText='display:flex;align-items:center;justify-content:center;padding:18px;z-index:80';
+var b=el('div',null,'card');b.style.cssText='width:min(360px,100%);margin:0';b.appendChild(el('h2',t));
+var i=el('input');i.type='password';i.placeholder='Password';i.autocomplete='off';b.appendChild(i);
+var r=el('div',null,'btns');var fin=function(v){o.remove();res(v)};
+btn(r,'Confirm',function(){fin(i.value||null)});btn(r,'Cancel',function(){fin(null)});
+b.appendChild(r);o.appendChild(b);document.body.appendChild(o);
+i.onkeydown=function(e){if(e.key==='Enter')fin(i.value||null);if(e.key==='Escape')fin(null)};setTimeout(function(){i.focus()},50)})}
+function mainWd(left,all){if(left<=0){alert('Main balance is empty.');return}
+var n;if(all){n=left/100;if(!confirm('Withdraw the whole main balance of '+usd(left)+'?'))return}
+else{var p=prompt('Withdraw how much from the main balance?\nAvailable: '+usd(left)+'\nEnter the amount in USD:',(left/100).toFixed(2));if(!p)return;n=parseFloat(p);if(!(n>0)){alert('Enter a valid amount.');return}
+if(!confirm('Withdraw $'+n.toFixed(2)+'?\nLeft in main balance: '+usd(Math.max(0,left-Math.round(n*100)))))return}
+askPw('Enter password to withdraw $'+n.toFixed(2)).then(function(p){if(p===null)return;api('POST','/api/mainwithdraw',{usd:n,pw:p}).then(load).catch(function(e){alert(e.message)})})}
 function ren(){if(D)render()}
 var sw=$('sw');
 COLORS.forEach(function(c,i){var b=el('button');b.type='button';b.className='swb'+(i==0?' on':'');b.style.background=c;b.setAttribute('aria-label','Color '+(i+1));b.onclick=function(){sel=i;[].forEach.call(sw.children,function(x,j){x.className='swb'+(j==i?' on':'')})};sw.appendChild(b)});
@@ -443,10 +544,10 @@ const ADMIN = head("Admin", '<meta name="robots" content="noindex">').replace("<
   '<section id="sec-lk" hidden><h1>Payment Links</h1><div class="card"><h2>Create a new link</h2><form id="nf"><input id="nm" placeholder="Link name (shown big on the preview)" maxlength="60"><input id="nt" placeholder="Short note (optional)" maxlength="100"><div class="sw" id="sw"></div><button class="pri" type="submit">Create link</button></form></div><h2>Your links</h2><div id="links"></div></section>' +
   '<section id="sec-iv" hidden><h1>Invoices</h1><p class="er" id="cwarn" hidden>The blockchain explorers cannot be reached right now, so payments cannot be verified. Nothing is marked paid or expired until they are back.</p>' +
   '<div id="umw" hidden><h2>Unmatched Bitcoin payments</h2><p class="mu">These payments reached your address but match no open invoice (often a slightly different amount). Pick the invoice they belong to.</p><div class="tw"><table><thead><tr><th>Time</th><th>BTC</th><th>Confirmations</th><th>Transaction</th><th></th></tr></thead><tbody id="umb"></tbody></table></div><h2>All invoices</h2></div><div class="btns" id="sft" data-v="" style="margin:0 0 12px"><button type="button" class="sfb on" data-v="">All</button><button type="button" class="sfb" data-v="paid">Done</button><button type="button" class="sfb" data-v="pending">Processing</button><button type="button" class="sfb" data-v="expired">Expired</button></div><div class="flt"><select id="flt" aria-label="Filter by link"></select><select id="fuf" aria-label="Filter by user" hidden></select></div><div class="tw"><table><thead id="ih"></thead><tbody id="hist"></tbody></table></div></section>' +
-  '<section id="sec-wd" hidden><h1>Withdraw</h1><div class="big"><span class="mu" id="unl"></span><b id="unp"></b><span class="mu" id="unr"></span></div><div id="wda" hidden><h2>Unpaid by user</h2><div class="tw"><table><thead><tr><th>User</th><th>Unpaid</th><th></th></tr></thead><tbody id="ub"></tbody></table></div></div><h2>Withdraw history</h2><div class="tw"><table><thead id="wh"></thead><tbody id="wb"></tbody></table></div></section>' +
-  '<section id="sec-us" hidden><h1>Sub Users</h1><div class="card"><h2>Add user</h2><form id="uf"><input id="uu" placeholder="Username (a-z, 0-9, _)" maxlength="20" autocapitalize="none"><input id="up" placeholder="Password (6+ characters)" autocomplete="off"><input id="ufee" inputmode="decimal" placeholder="Fee % taken from this user (e.g. 5)"><button class="pri" type="submit">Add user</button></form></div><h2>User list</h2><div class="tw"><table><thead><tr><th>User</th><th>Password</th><th>Fee</th><th>Unpaid balance</th><th></th></tr></thead><tbody id="ut"></tbody></table></div></section>' +
+  '<section id="sec-wd" hidden><h1>Withdraw</h1><div class="big"><span class="mu" id="unl"></span><b id="unp"></b><span class="mu" id="unr"></span></div><div id="mwa" hidden><h2>Main balance</h2><div class="big"><span class="mu">Available to withdraw</span><b id="mwb"></b><div class="btns" id="mwx"></div></div><h2>Main withdraw history</h2><div class="tw"><table><thead><tr><th>Time</th><th>Amount</th><th>Left</th><th></th></tr></thead><tbody id="mwt"></tbody></table></div></div><div id="wda" hidden><h2>Unpaid by user</h2><div class="tw"><table><thead><tr><th>User</th><th>Unpaid</th><th></th></tr></thead><tbody id="ub"></tbody></table></div></div><h2>Withdraw history</h2><div class="tw"><table><thead id="wh"></thead><tbody id="wb"></tbody></table></div></section>' +
+  '<section id="sec-us" hidden><h1>Sub Users</h1><div class="card"><h2>Add user</h2><form id="uf"><input id="uu" placeholder="Username (a-z, 0-9, _)" maxlength="20" autocapitalize="none"><input id="up" placeholder="Password (6+ characters)" autocomplete="off"><input id="ufee" inputmode="decimal" placeholder="Extra % added to payer invoice (e.g. 30: $10 becomes $13)"><button class="pri" type="submit">Add user</button></form></div><h2>User list</h2><div class="tw"><table><thead><tr><th>User</th><th>Password</th><th>Fee</th><th>Unpaid balance</th><th></th></tr></thead><tbody id="ut"></tbody></table></div></section>' +
   '</div></div>' + DRAWER +
-  tail("<script>" + ADMINJS + "</script>");
+  tail('<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script>' + ADMINJS + "</script>");
 
 module.exports = async (req, res) => {
   const q = req.query || {};
@@ -512,7 +613,13 @@ module.exports = async (req, res) => {
       if (!v || !(usd >= 1) || usd > 10000) return json(400, { error: "Enter an amount between $1 and $10,000." });
       if (!addrOk(BTC_ADDRESS)) return json(500, { error: "The Bitcoin address is not set up correctly." });
       const l = JSON.parse(v), price = await btcUsd(), t = Date.now();
-      let sats = Math.round(usd / price * 1e8);
+      // sub-user links: the payer is asked for amount + the user's %; the sub user still gets exactly the amount selected
+      let charge = usd, base = 0;
+      if (l.owner && l.owner !== "admin") {
+        const ux = await db(["HGET", "users", l.owner]);
+        if (ux) { const uo = JSON.parse(ux), pct = +uo.fee || 0; if (pct > 0) { base = usd; charge = Math.round(usd * (100 + pct)) / 100; } }
+      }
+      let sats = Math.round(charge / price * 1e8);
       if (sats < 1000) return json(400, { error: "That amount is too small for a Bitcoin payment." });
       // every recent invoice gets its own exact amount, so a payment can be matched to it
       const ids = (await db(["LRANGE", "ilog", 0, 149])) || [], used = new Set();
@@ -521,10 +628,10 @@ module.exports = async (req, res) => {
       for (let n = 0; used.has(sats) && n < 500; n++) sats += 1;
       if (used.has(sats)) return json(503, { error: "Too many open invoices. Please try again shortly." });
       const id = rand(12), btc = (sats / 1e8).toFixed(8);
-      const rec = { id, slug: String(b.slug), name: l.name, owner: l.owner || "admin", usd, sats, btc, price, need: confsFor(usd), t, exp: t + INVOICE_MINUTES * 60 * 1000, st: "pending", conf: 0 };
+      const rec = { id, slug: String(b.slug), name: l.name, owner: l.owner || "admin", usd: charge, base, sats, btc, price, need: confsFor(charge), t, exp: t + INVOICE_MINUTES * 60 * 1000, st: "pending", conf: 0 };
       await db(["HSET", "inv", id, JSON.stringify(rec)]);
       await db(["LPUSH", "ilog", id]); await db(["LTRIM", "ilog", 0, 499]);
-      return json(200, { id, addr: BTC_ADDRESS, sats, btc, price, exp: rec.exp, need: rec.need, uri: "bitcoin:" + BTC_ADDRESS + "?amount=" + btc });
+      return json(200, { id, usd: charge, addr: BTC_ADDRESS, sats, btc, price, exp: rec.exp, need: rec.need, uri: "bitcoin:" + BTC_ADDRESS + "?amount=" + btc });
     }
     // ---- public: payment check (the pay page asks every 10s) ----
     if (path === "/api/check") {
@@ -540,6 +647,7 @@ module.exports = async (req, res) => {
     if (w && w !== "admin") { const x = await db(["HGET", "users", w]); if (x) urec = JSON.parse(x); else me = null; }
     if (!me) return json(401, { error: "Login required" });
     const admin = me === "admin";
+    const pwOk = (v) => { const mine = admin ? PW : (urec && urec.pw) || ""; return !!mine && eq(String(v || ""), String(mine)); };
 
     if (path === "/api/dash") {
       const ids = (await db(["LRANGE", "ilog", 0, 499])) || [];
@@ -565,7 +673,13 @@ module.exports = async (req, res) => {
       const wids = (await db(["LRANGE", "wdlog", 0, 299])) || [];
       let wd = wids.length ? ((await db(["HMGET", "wd", ...wids])) || []).filter(Boolean).map((x) => JSON.parse(x)) : [];
       wd = wd.filter((x) => admin || x.u === me);
-      return json(200, { me: { role: admin ? "admin" : "user", u: me, pw: admin ? PW : (urec && urec.pw) || "" }, bal: admin ? bal : { [me]: bal[me] || 0 }, users, links, inv, wd, unm, chain: !!chain });
+      let mwt = 0, mw = [];
+      if (admin) {
+        mwt = +((await db(["HGET", "meta", "mw"])) || 0);
+        const mids = (await db(["LRANGE", "mwlog", 0, 299])) || [];
+        mw = mids.length ? ((await db(["HMGET", "mwh", ...mids])) || []).filter(Boolean).map((x) => JSON.parse(x)) : [];
+      }
+      return json(200, { me: { role: admin ? "admin" : "user", u: me, pw: admin ? PW : (urec && urec.pw) || "" }, bal: admin ? bal : { [me]: bal[me] || 0 }, users, links, inv: inv.map((x) => Object.assign({}, x, { usd: x.base > 0 ? x.base : x.usd, base: 0 }, admin ? {} : { btc: "", sats: 0 })), wd, mwt, mw, unm, chain: !!chain });
     }
     if (path === "/api/withdraw" && req.method === "POST") {
       if (!admin) return json(403, { error: "Admin only" });
@@ -577,6 +691,30 @@ module.exports = async (req, res) => {
       const id = rand(12), rec = { id, u, amt: cents, t: Date.now() };
       await db(["HSET", "wd", id, JSON.stringify(rec)]); await db(["LPUSH", "wdlog", id]); await db(["LTRIM", "wdlog", 0, 999]);
       return json(200, { ok: 1, left });
+    }
+    if (path === "/api/mainwithdraw" && req.method === "POST") {
+      if (!admin) return json(403, { error: "Admin only" });
+      if (!pwOk(b.pw)) return json(403, { error: "Wrong password." });
+      const cents = Math.round(parseFloat(b.usd) * 100);
+      if (!(cents > 0) || cents > 1e10) return json(400, { error: "Enter a valid amount." });
+      const fb = (await db(["HGETALL", "bal"])) || []; let tot = 0;
+      for (let i = 0; i < fb.length; i += 2) tot += +fb[i + 1];
+      const taken = +((await db(["HGET", "meta", "mw"])) || 0), avail = tot - taken;
+      if (cents > avail) return json(400, { error: "That is more than the main balance." });
+      await db(["HINCRBY", "meta", "mw", cents]);
+      const id = rand(12), rec = { id, amt: cents, after: avail - cents, t: Date.now() };
+      await db(["HSET", "mwh", id, JSON.stringify(rec)]); await db(["LPUSH", "mwlog", id]); await db(["LTRIM", "mwlog", 0, 999]);
+      return json(200, { ok: 1, left: avail - cents });
+    }
+    if (path === "/api/mainwithdraw/undo" && req.method === "POST") {
+      if (!admin) return json(403, { error: "Admin only" });
+      if (!pwOk(b.pw)) return json(403, { error: "Wrong password." });
+      const id = String(b.id || ""), v = await db(["HGET", "mwh", id]);
+      if (!v) return json(404, { error: "Withdrawal not found" });
+      const r = JSON.parse(v);
+      if (!(await db(["HDEL", "mwh", id]))) return json(404, { error: "Withdrawal not found" });
+      await db(["HINCRBY", "meta", "mw", -r.amt]); await db(["LREM", "mwlog", 0, id]);
+      return json(200, { ok: 1 });
     }
     if (path === "/api/withdraw/undo" && req.method === "POST") {
       if (!admin) return json(403, { error: "Admin only" });
@@ -607,13 +745,14 @@ module.exports = async (req, res) => {
       if (!v) return json(404, { error: "Invoice not found" });
       const r = JSON.parse(v);
       if (!admin && r.owner !== me) return json(403, { error: "Not allowed" });
+      if (!pwOk(b.pw)) return json(403, { error: "Wrong password." });
       r.done = !!b.done; r.dt = r.done ? Date.now() : 0;
       await db(["HSET", "inv", r.id, JSON.stringify(r)]);
       return json(200, { ok: 1, done: r.done });
     }
     if (path === "/api/users" && req.method === "POST") {
       if (!admin) return json(403, { error: "Admin only" });
-      const u = String(b.username || "").trim().toLowerCase(), p = String(b.password || ""), fee = Math.min(50, Math.max(0, parseFloat(b.fee) || 0));
+      const u = String(b.username || "").trim().toLowerCase(), p = String(b.password || ""), fee = Math.min(100, Math.max(0, parseFloat(b.fee) || 0));
       if (!/^[a-z0-9_]{3,20}$/.test(u) || u === "admin") return json(400, { error: "Username: 3-20 letters, numbers or _ (not 'admin')." });
       if (p.length < 6) return json(400, { error: "Password needs at least 6 characters." });
       if (await db(["HGET", "users", u])) return json(400, { error: "That username already exists." });
