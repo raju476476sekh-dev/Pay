@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const BTC_ADDRESS = "15LXQpFN8pFXv8LQ9nC7ZUqfC7Ycoedwvt"; // your permanent Bitcoin address (public address only, never a seed or private key)
 const INVOICE_MINUTES = 120; // an invoice stays open for 2 hours
 // Network confirmations needed before an invoice is marked PAID (bigger payments wait longer)
-const confsFor = (usd) => (usd >= 1000 ? 6 : usd >= 200 ? 3 : 2);
+const confsFor = (usd) => (usd >= 1000 ? 3 : usd >= 200 ? 2 : 1);
 // Two independent public explorers must BOTH agree before anything is marked paid
 const SOURCES = ["https://mempool.space/api", "https://blockstream.info/api"];
 // ==========================
