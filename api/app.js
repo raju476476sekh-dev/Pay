@@ -2,6 +2,7 @@ const crypto = require("crypto");
 
 // ===== Edit if needed =====
 const BTC_ADDRESS = "15LXQpFN8pFXv8LQ9nC7ZUqfC7Ycoedwvt"; // your permanent Bitcoin address (public address only, never a seed or private key)
+const UNMATCHED_SINCE = Date.UTC(2026, 10, 26) / 1000; // unmatched list ignores payments confirmed before this time (month is 0-based: 10 = November)
 const INVOICE_MINUTES = 120; // an invoice stays open for 2 hours
 // Network confirmations needed before an invoice is marked PAID (bigger payments wait longer)
 const confsFor = (usd) => (usd >= 1000 ? 3 : usd >= 200 ? 2 : 1);
@@ -266,6 +267,7 @@ async function chainLoad() {
 const needOf = (r) => r.need || confsFor(r.usd);
 async function settle(r, paid, extra) {
   if (paid) {
+    let cu = 0, ca = 0;
     if (await db(["SETNX", "paid:" + r.id, "1"])) {
       const c = Math.round(r.usd * 100); let fee = 0;
       if (r.owner !== "admin") {
@@ -274,10 +276,12 @@ async function settle(r, paid, extra) {
         else {
           const bc = r.base > 0 ? Math.round(r.base * 100) : c; // sub user always gets the selected amount, nothing is deducted
           fee = 0; // the extra % stays in the wallet only, it is not added to any dashboard balance
-          await db(["HINCRBY", "bal", r.owner, bc]);
+          await db(["HINCRBY", "bal", r.owner, bc]); cu = bc;
         }
       }
-      await db(["HINCRBY", "bal", "admin", r.owner === "admin" ? c : fee]);
+      ca = r.owner === "admin" ? c : fee;
+      await db(["HINCRBY", "bal", "admin", ca]);
+      r.cr = { u: cu, a: ca };
     }
     if (extra) Object.assign(r, extra);
     r.st = "paid"; r.pt = Date.now();
@@ -453,7 +457,7 @@ $('cwarn').hidden=!(a&&D.chain===false);$('umw').hidden=!(a&&D.unm&&D.unm.length
 var UM=$('umb');UM.innerHTML='';
 if(a)(D.unm||[]).forEach(function(o){var r=el('tr');r.appendChild(el('td',o.bt?new Date(o.bt*1000).toLocaleString():'Unconfirmed'));r.appendChild(el('td',(o.sats/1e8).toFixed(8),'pw'));r.appendChild(el('td',String(o.conf)));
 var c=el('td'),l=el('a',o.txid.slice(0,8)+'...'+o.txid.slice(-6));l.href='https://mempool.space/tx/'+o.txid;l.target='_blank';l.rel='noopener noreferrer';c.appendChild(l);r.appendChild(c);
-var c2=el('td');btn(c2,'Assign',function(){var id=prompt('Which invoice does this '+(o.sats/1e8).toFixed(8)+' BTC payment complete?\nPaste the invoice ID from the Invoice column:');if(!id)return;api('POST','/api/btc/assign',{txid:o.txid,vout:o.vout,id:id.trim()}).then(load).catch(function(e){alert(e.message)})});r.appendChild(c2);UM.appendChild(r)});
+var c2=el('td');btn(c2,'Assign',function(){var id=prompt('Which invoice does this '+(o.sats/1e8).toFixed(8)+' BTC payment complete?\nPaste the invoice ID from the Invoice column:');if(!id)return;askPw('Enter password to assign this payment').then(function(p){if(p===null)return;api('POST','/api/btc/assign',{txid:o.txid,vout:o.vout,id:id.trim(),pw:p}).then(load).catch(function(e){alert(e.message)})})});r.appendChild(c2);UM.appendChild(r)});
 /* ---- invoices ---- */
 var f=$('flt'),cv=f.value;f.innerHTML='';var o=el('option','All links');o.value='';f.appendChild(o);
 if(a){var om=el('option','Add funds (main page)');om.value='main';f.appendChild(om)}
@@ -479,6 +483,7 @@ api('POST','/api/invoice/done',{id:x.id,done:nv,pw:p}).then(function(){x.done=nv
 dc.appendChild(dbn);r.appendChild(dc);H.appendChild(r)})}
 function icell(x){var c=el('td');var u=el('div','$'+x.usd.toFixed(2));u.style.fontWeight='800';c.appendChild(u);if(x.base>0){var bs=el('div','user gets $'+Number(x.base).toFixed(2)+' + fee $'+(x.usd-x.base).toFixed(2),'mu');bs.style.fontSize='.75rem';c.appendChild(bs)}if(x.btc){var bt=el('div',x.btc+' BTC','pw mu');bt.style.fontSize='.75rem';c.appendChild(bt)}var d=el('div',x.id,'pw mu');d.style.fontSize='.75rem';c.appendChild(d);
 if(x.tx){var l=el('a','tx '+x.tx.slice(0,8)+'...'+x.tx.slice(-6));l.href='https://mempool.space/tx/'+x.tx;l.target='_blank';l.rel='noopener noreferrer';l.style.fontSize='.75rem';c.appendChild(l)}
+if(D.me.role==='admin'&&x.manual&&x.st==='paid'){var ub=el('button','Undo assign');ub.type='button';ub.style.cssText='margin-top:6px;font-size:.72rem;padding:4px 10px';ub.onclick=function(){if(!confirm('Undo this manual assignment?\nThe invoice goes back to pending, the balance added for it is removed, and the payment returns to the Unmatched list.'))return;askPw('Enter password to undo assign').then(function(p){if(p===null)return;api('POST','/api/btc/unassign',{id:x.id,pw:p}).then(load).catch(function(e){alert(e.message)})})};c.appendChild(ub)}
 if(x.st==='pending'&&x.tx)c.appendChild(el('div','confirming '+(x.conf||0)+'/'+(x.need||2),'mu'));
 return c}
 function payUser(u){var left=D.bal[u]||0;if(left<=0){alert('Nothing is unpaid for '+u+'.');return}
@@ -660,7 +665,7 @@ module.exports = async (req, res) => {
       let unm = [];
       if (admin && chain) { // payments to the address that no invoice has claimed
         const waiting = new Set(inv.filter((x) => x.st === "pending").map((x) => x.sats));
-        const cand = chain.filter((o) => (!o.bt || o.bt > nowT / 1000 - 7 * 86400) && !waiting.has(o.sats));
+        const cand = chain.filter((o) => (!o.bt || (o.bt > nowT / 1000 - 7 * 86400 && o.bt >= UNMATCHED_SINCE)) && !waiting.has(o.sats));
         if (cand.length) { const cl = (await db(["MGET", ...cand.map((o) => "tx:" + o.txid + ":" + o.vout)])) || []; unm = cand.filter((o, i) => !cl[i]); }
       }
       const fl = (await db(["HGETALL", "links"])) || [], links = [];
@@ -728,6 +733,7 @@ module.exports = async (req, res) => {
     }
     if (path === "/api/btc/assign" && req.method === "POST") {
       if (!admin) return json(403, { error: "Admin only" });
+      if (!pwOk(b.pw)) return json(403, { error: "Wrong password." });
       const chain = await chainState();
       if (!chain) return json(503, { error: "Cannot reach the blockchain explorers right now. Try again in a minute." });
       const o = chain.find((x) => x.txid === String(b.txid || "") && x.vout === +b.vout), v = await db(["HGET", "inv", String(b.id || "")]);
@@ -738,6 +744,27 @@ module.exports = async (req, res) => {
       // Admin manual assign: allowed at ANY confirmation depth (even 0 / unconfirmed), the admin takes responsibility.
       if (!(await db(["SET", "tx:" + o.txid + ":" + o.vout, r.id, "NX"]))) return json(400, { error: "This payment was already used for another invoice." });
       await settle(r, true, { tx: o.txid, vout: o.vout, recv: o.sats, conf: o.conf, manual: true });
+      return json(200, { ok: 1 });
+    }
+    if (path === "/api/btc/unassign" && req.method === "POST") {
+      if (!admin) return json(403, { error: "Admin only" });
+      if (!pwOk(b.pw)) return json(403, { error: "Wrong password." });
+      const v = await db(["HGET", "inv", String(b.id || "")]);
+      if (!v) return json(404, { error: "Invoice not found." });
+      const r = JSON.parse(v);
+      if (r.st !== "paid" || !r.manual || !r.tx) return json(400, { error: "Only a manually assigned payment can be undone." });
+      const c = Math.round(r.usd * 100); let cu = 0, ca = 0;
+      if (r.cr) { cu = r.cr.u || 0; ca = r.cr.a || 0; }
+      else if (r.owner === "admin") ca = c;
+      else { const ux = await db(["HGET", "users", r.owner]); if (ux) cu = r.base > 0 ? Math.round(r.base * 100) : c; else ca = c; }
+      if (cu > 0) { const cur = +((await db(["HGET", "bal", r.owner])) || 0); if (cur < cu) return json(400, { error: "That user's balance is lower than this payment (already paid out). Undo is not possible." }); }
+      if (!(await db(["DEL", "paid:" + r.id]))) return json(400, { error: "Already undone." });
+      await db(["DEL", "tx:" + r.tx + ":" + r.vout]);
+      if (cu) await db(["HINCRBY", "bal", r.owner, -cu]);
+      if (ca) await db(["HINCRBY", "bal", "admin", -ca]);
+      for (const k of ["tx", "vout", "recv", "manual", "pt", "cr", "done", "dt"]) delete r[k];
+      r.st = "pending"; r.conf = 0;
+      await db(["HSET", "inv", r.id, JSON.stringify(r)]);
       return json(200, { ok: 1 });
     }
     if (path === "/api/invoice/done" && req.method === "POST") {
