@@ -2,6 +2,7 @@ const crypto = require("crypto");
 
 // ===== Edit if needed =====
 const BTC_ADDRESS = "15LXQpFN8pFXv8LQ9nC7ZUqfC7Ycoedwvt"; // your permanent Bitcoin address (public address only, never a seed or private key)
+const SECOND_WALLET = "154sKvim1puBmJX7fDLRA4nnFiRUkQZcSq"; // second wallet (public address only). Switch to it in Settings. Leave "" for none.
 const UNMATCHED_SINCE = Date.UTC(2026, 10, 26) / 1000; // unmatched list ignores payments confirmed before this time (month is 0-based: 10 = November)
 const INVOICE_MINUTES = 120; // an invoice stays open for 2 hours
 // Network confirmations needed before an invoice is marked PAID (bigger payments wait longer)
@@ -136,7 +137,7 @@ function ogRender(name) {
   return encodePng(W, H, out);
 }
 
-const CSS = `:root{--bg:#070d0a;--ink:#edf6f0;--mu:#8ea399;--ln:#25352c;--fd:#101914;--ac:#1ed760;--er:#ff7b72;--gd:#d9b45a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 520px at 50% -8%,#10301e,var(--bg));background-color:var(--bg);color:var(--ink);font:16px/1.5 "Avenir Next","Segoe UI",system-ui,sans-serif;padding:18px 14px 48px;display:flex;justify-content:center;min-height:100vh}main{width:100%;max-width:460px}main.w{max-width:900px}h1{font-size:1.7rem;line-height:1.2;margin:0 0 6px;overflow-wrap:anywhere}h2{font-size:1.05rem;margin:26px 0 8px}.mu{color:var(--mu);overflow-wrap:anywhere;font-size:.85rem}p.mu{font-size:1rem}input,select{width:100%;font:inherit;font-size:1.1rem;font-weight:600;padding:12px 14px;border:1.5px solid var(--ln);border-radius:14px;background:#0b130f;color:var(--ink)}select{font-size:1rem;margin-bottom:10px}input:focus{outline:2px solid var(--ac)}button{font:inherit;font-weight:700;border-radius:12px;padding:12px;cursor:pointer;border:1.5px solid var(--ln);background:transparent;color:var(--ink)}button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}.pri{width:100%;background:var(--ac);border:0;color:#04130a;margin-top:14px;padding:16px;font-size:1.1rem;border-radius:18px}.pri:disabled{background:#2a4434;color:#6f8a7a;cursor:default}.sec{width:100%;margin-top:10px;border-radius:16px;padding:14px;border-color:#2f4a3a}.er{color:var(--er);font-weight:600}.c{text-align:center}.panel{background:linear-gradient(180deg,#121d17,#0d1511);border:1px solid var(--ln);border-radius:28px;padding:22px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55)}.pill{display:inline-block;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:6px 18px;font-weight:700}.meth{background:#131f18;border:1px solid var(--ln);border-radius:22px;padding:20px;text-align:center;margin:16px 0}.ico{width:68px;height:68px;border-radius:20px;background:#00c853;color:#04130a;font:800 2.4rem/68px Georgia,serif;margin:0 auto 10px;box-shadow:0 0 44px #00c85345}.big{font-size:3.6rem;font-weight:800;text-align:center;line-height:1.1;overflow-wrap:anywhere}.usd{text-align:center;letter-spacing:.2em;color:var(--mu);font-weight:700;margin-bottom:16px}.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kp button{height:60px;font-size:1.6rem;padding:0;border-radius:18px;background:#131f18}.kp button:active{background:#1d3226}.kp svg{pointer-events:none}.qr{background:#fff;padding:14px;border-radius:18px;width:max-content;max-width:100%;margin:16px auto}.facts{text-align:center}.cd{display:inline-block;border:1px solid var(--ln);background:#0b130f;border-radius:99px;padding:4px 16px;font-weight:800;font-variant-numeric:tabular-nums}.steps{background:#0d1611;border:1px solid var(--ln);border-radius:18px;padding:14px 16px 14px 34px;margin:6px 0}.steps li{margin:6px 0}textarea{width:100%;height:80px;font:.78rem monospace;word-break:break-all;background:#0b130f;color:var(--ink);border:1.5px solid var(--ln);border-radius:12px;padding:10px}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--ln);vertical-align:top}th{color:var(--mu);font-weight:600}td button{padding:5px 10px;font-size:.85rem}.card{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:16px;margin:16px 0}.card h2{margin-top:0}#nf input,#uf input{margin-bottom:10px;font-size:1rem}.sw{display:flex;gap:10px;margin:4px 0 6px}.swb{width:34px;height:34px;padding:0;border-radius:50%;border:2px solid var(--ln)}.swb.on{border-color:var(--ink);outline:2px solid var(--bg);outline-offset:-5px}.lk{background:var(--fd);border:1px solid var(--ln);border-left:8px solid var(--ln);border-radius:14px;padding:12px 14px;margin-bottom:12px;overflow-wrap:anywhere}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btns button,.top button{padding:6px 12px;font-size:.85rem}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.bar{height:8px;border-radius:99px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.stat{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:14px}.stat b{display:block;font-size:1.5rem;margin-top:2px}.stat.hi{background:linear-gradient(135deg,#1a3a25,#101914);border-color:#3a6a4a}.stat.hi b{color:var(--gd)}.b{padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:#fff}.b.paid{background:#168a4a}.b.pending{background:#9a6b00}.b.expired{background:#b3261e}[hidden]{display:none!important}body.adm{display:block;padding:0}body.adm main{max-width:none}#login{max-width:420px;margin:0 auto;padding:48px 14px}.brand{font-weight:800;letter-spacing:.06em;font-size:1.15rem;line-height:1.15}.brand small{display:block;font-size:.72rem;letter-spacing:.32em;color:var(--ac);margin-top:5px}.shell{display:flex;min-height:100vh}.side{width:250px;flex:none;background:#0a110d;border-right:1px solid var(--ln);display:flex;flex-direction:column;padding:22px 14px;position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto}.rl{align-self:flex-start;margin:14px 0 20px;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:3px 12px;font-size:.78rem;font-weight:700}.side nav{display:flex;flex-direction:column;gap:6px}.nv{text-align:left;border:0;padding:12px 14px;border-radius:12px;color:var(--mu);background:transparent}.nv:hover{color:var(--ink)}.nv.on{background:#13261b;color:var(--ink);box-shadow:inset 3px 0 0 var(--ac)}.me{margin-top:auto;border-top:1px solid var(--ln);padding-top:14px;font-size:.85rem;overflow-wrap:anywhere}.me div{margin-bottom:6px}.me button{padding:5px 10px;font-size:.8rem}#out{margin-top:6px}.pw{font-family:ui-monospace,Menlo,Consolas,monospace}.cont{flex:1;min-width:0;padding:24px 22px 56px;max-width:1000px}.mbar{display:none}.tw{overflow-x:auto}.flt{display:flex;gap:10px;flex-wrap:wrap}.flt select{width:auto;min-width:180px}.flt select[hidden]{display:none}@media(max-width:760px){.side{position:fixed;left:0;top:0;bottom:0;height:auto;z-index:30;transform:translateX(-100%);transition:transform .2s;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px))}.side.open{transform:none;box-shadow:0 0 60px rgba(0,0,0,.7)}.mbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}.mbar button{padding:8px 14px}.cont{padding:14px 14px 56px}}.brand{cursor:pointer}.amtb{font:800 1.55rem ui-monospace,Menlo,Consolas,monospace;color:var(--ac);overflow-wrap:anywhere;margin-top:2px}.big{border:1px solid #1f5a37;background:linear-gradient(135deg,#0f2a1b,#0b1a12);border-radius:20px;padding:22px 20px;margin-bottom:22px}.big b{display:block;font-size:2.8rem;line-height:1.15;margin:4px 0}.dnb{background:#fff;color:#04130a;border:0;font-weight:800;padding:7px 14px;border-radius:10px;letter-spacing:.04em}.dnb.on{background:#1ed760;color:#04130a}.dov{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:40}.dr{position:fixed;left:0;top:0;bottom:0;width:min(380px,90vw);z-index:50;background:linear-gradient(180deg,#0d1a13,#070d0a);border-right:1px solid #24402f;transform:translateX(-102%);transition:transform .25s;overflow-y:auto;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 0 70px rgba(0,0,0,.7)}.dr.open{transform:none}.drx{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border-radius:50%;font-size:1.3rem;line-height:1}.dk{font-size:.7rem;letter-spacing:.28em;color:#5fe39a;font-weight:700;margin:28px 0 8px}.dr h3{margin:0 0 6px;font-size:1.2rem;line-height:1.4}.wa{display:block;text-align:center;text-decoration:none;margin-top:16px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#25d366,#128c4a);color:#04140a;font-weight:800;font-size:1.05rem;box-shadow:0 8px 28px rgba(37,211,102,.25)}.wa small{display:block;font-weight:600;opacity:.8;margin-top:2px;letter-spacing:.06em}.promo{margin-top:28px;border-radius:20px;padding:1px;background:linear-gradient(135deg,#f7d774,#a8741a 45%,#f7d774)}.pin{border-radius:19px;padding:24px 18px;background:radial-gradient(120% 90% at 0% 0%,#2a2108,#0c0a04 70%);text-align:center}.pk{color:#f7d774;font-size:.7rem;letter-spacing:.32em;font-weight:700}.pt{font-size:2.1rem;font-weight:900;letter-spacing:.04em;margin:8px 0 14px;background:linear-gradient(180deg,#fff2b8,#e0a93a);-webkit-background-clip:text;background-clip:text;color:transparent}.bd{display:flex;gap:10px;justify-content:center;margin-bottom:16px}.bd span{min-width:64px;padding:9px 0;border-radius:12px;border:1px solid #8a6a1f;background:#1a1405;color:#f7d774;font-weight:800;letter-spacing:.08em}.pin p{margin:0 0 18px;color:#e9dcae;line-height:1.55}.gold{display:block;text-decoration:none;padding:13px;border-radius:14px;background:linear-gradient(135deg,#f7d774,#d19a2a);color:#241a02;font-weight:800}.sfb{padding:8px 16px;border-radius:99px;font-size:.9rem;color:var(--mu)}.sfb.on{background:#13261b;color:var(--ink);border-color:var(--ac)}
+const CSS = `:root{--bg:#070d0a;--ink:#edf6f0;--mu:#8ea399;--ln:#25352c;--fd:#101914;--ac:#1ed760;--er:#ff7b72;--gd:#d9b45a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 520px at 50% -8%,#10301e,var(--bg));background-color:var(--bg);color:var(--ink);font:16px/1.5 "Avenir Next","Segoe UI",system-ui,sans-serif;padding:18px 14px 48px;display:flex;justify-content:center;min-height:100vh}main{width:100%;max-width:460px}main.w{max-width:900px}h1{font-size:1.7rem;line-height:1.2;margin:0 0 6px;overflow-wrap:anywhere}h2{font-size:1.05rem;margin:26px 0 8px}.mu{color:var(--mu);overflow-wrap:anywhere;font-size:.85rem}p.mu{font-size:1rem}input,select{width:100%;font:inherit;font-size:1.1rem;font-weight:600;padding:12px 14px;border:1.5px solid var(--ln);border-radius:14px;background:#0b130f;color:var(--ink)}select{font-size:1rem;margin-bottom:10px}input:focus{outline:2px solid var(--ac)}button{font:inherit;font-weight:700;border-radius:12px;padding:12px;cursor:pointer;border:1.5px solid var(--ln);background:transparent;color:var(--ink)}button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}.pri{width:100%;background:var(--ac);border:0;color:#04130a;margin-top:14px;padding:16px;font-size:1.1rem;border-radius:18px}.pri:disabled{background:#2a4434;color:#6f8a7a;cursor:default}.sec{width:100%;margin-top:10px;border-radius:16px;padding:14px;border-color:#2f4a3a}.er{color:var(--er);font-weight:600}.c{text-align:center}.panel{background:linear-gradient(180deg,#121d17,#0d1511);border:1px solid var(--ln);border-radius:28px;padding:22px 16px;box-shadow:0 24px 70px rgba(0,0,0,.55)}.pill{display:inline-block;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:6px 18px;font-weight:700}.meth{background:#131f18;border:1px solid var(--ln);border-radius:22px;padding:20px;text-align:center;margin:16px 0}.ico{width:68px;height:68px;border-radius:20px;background:#00c853;color:#04130a;font:800 2.4rem/68px Georgia,serif;margin:0 auto 10px;box-shadow:0 0 44px #00c85345}.big{font-size:clamp(2.1rem,11vw,2.7rem);font-weight:800;text-align:center;line-height:1.1;overflow-wrap:anywhere}.usd{text-align:center;letter-spacing:.2em;color:var(--mu);font-weight:700;margin-bottom:16px}.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.kp button{height:60px;font-size:1.6rem;padding:0;border-radius:18px;background:#131f18}.kp button:active{background:#1d3226}.kp svg{pointer-events:none}.qr{background:#fff;padding:14px;border-radius:18px;width:max-content;max-width:100%;margin:16px auto}.facts{text-align:center}.cd{display:inline-block;border:1px solid var(--ln);background:#0b130f;border-radius:99px;padding:4px 16px;font-weight:800;font-variant-numeric:tabular-nums}.steps{background:#0d1611;border:1px solid var(--ln);border-radius:18px;padding:14px 16px 14px 34px;margin:6px 0}.steps li{margin:6px 0}textarea{width:100%;height:80px;font:.78rem monospace;word-break:break-all;background:#0b130f;color:var(--ink);border:1.5px solid var(--ln);border-radius:12px;padding:10px}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--ln);vertical-align:top}th{color:var(--mu);font-weight:600}td button{padding:5px 10px;font-size:.85rem}.card{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:16px;margin:16px 0}.card h2{margin-top:0}#nf input,#uf input{margin-bottom:10px;font-size:1rem}.sw{display:flex;gap:10px;margin:4px 0 6px}.swb{width:34px;height:34px;padding:0;border-radius:50%;border:2px solid var(--ln)}.swb.on{border-color:var(--ink);outline:2px solid var(--bg);outline-offset:-5px}.lk{background:var(--fd);border:1px solid var(--ln);border-left:8px solid var(--ln);border-radius:14px;padding:12px 14px;margin-bottom:12px;overflow-wrap:anywhere}.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.btns button,.top button{padding:6px 12px;font-size:.85rem}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.bar{height:8px;border-radius:99px;margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.stat{background:var(--fd);border:1px solid var(--ln);border-radius:18px;padding:14px}.stat b{display:block;font-size:1.5rem;margin-top:2px}.stat.hi{background:linear-gradient(135deg,#1a3a25,#101914);border-color:#3a6a4a}.stat.hi b{color:var(--gd)}.b{padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:#fff}.b.paid{background:#168a4a}.b.pending{background:#9a6b00}.b.expired{background:#b3261e}[hidden]{display:none!important}body.adm{display:block;padding:0}body.adm main{max-width:none}#login{max-width:420px;margin:0 auto;padding:48px 14px}.brand{font-weight:800;letter-spacing:.06em;font-size:1.15rem;line-height:1.15}.brand small{display:block;font-size:.72rem;letter-spacing:.32em;color:var(--ac);margin-top:5px}.shell{display:flex;min-height:100vh}.side{width:250px;flex:none;background:#0a110d;border-right:1px solid var(--ln);display:flex;flex-direction:column;padding:22px 14px;position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto}.rl{align-self:flex-start;margin:14px 0 20px;border:1px solid #1f5a37;background:#0f2a1b;color:#5fe39a;border-radius:99px;padding:3px 12px;font-size:.78rem;font-weight:700}.side nav{display:flex;flex-direction:column;gap:6px}.nv{text-align:left;border:0;padding:12px 14px;border-radius:12px;color:var(--mu);background:transparent}.nv:hover{color:var(--ink)}.nv.on{background:#13261b;color:var(--ink);box-shadow:inset 3px 0 0 var(--ac)}.me{margin-top:auto;border-top:1px solid var(--ln);padding-top:14px;font-size:.85rem;overflow-wrap:anywhere}.me div{margin-bottom:6px}.me button{padding:5px 10px;font-size:.8rem}#out{margin-top:6px}.pw{font-family:ui-monospace,Menlo,Consolas,monospace}.cont{flex:1;min-width:0;padding:24px 22px 56px;max-width:1000px}.mbar{display:none}.tw{overflow-x:auto}.flt{display:flex;gap:10px;flex-wrap:wrap}.flt select{width:auto;min-width:180px}.flt select[hidden]{display:none}@media(max-width:760px){.side{position:fixed;left:0;top:0;bottom:0;height:auto;z-index:30;transform:translateX(-100%);transition:transform .2s;padding-bottom:calc(22px + env(safe-area-inset-bottom,0px))}.side.open{transform:none;box-shadow:0 0 60px rgba(0,0,0,.7)}.mbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}.mbar button{padding:8px 14px}.cont{padding:14px 14px 56px}}.brand{cursor:pointer}.amtb{font:800 1.55rem ui-monospace,Menlo,Consolas,monospace;color:var(--ac);overflow-wrap:anywhere;margin-top:2px}.big{border:1px solid #1f5a37;background:linear-gradient(135deg,#0f2a1b,#0b1a12);border-radius:20px;padding:22px 20px;margin-bottom:22px}.big b{display:block;font-size:2.8rem;line-height:1.15;margin:4px 0}.dnb{background:#fff;color:#04130a;border:0;font-weight:800;padding:7px 14px;border-radius:10px;letter-spacing:.04em}.dnb.on{background:#1ed760;color:#04130a}.dov{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:40}.dr{position:fixed;left:0;top:0;bottom:0;width:min(380px,90vw);z-index:50;background:linear-gradient(180deg,#0d1a13,#070d0a);border-right:1px solid #24402f;transform:translateX(-102%);transition:transform .25s;overflow-y:auto;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));box-shadow:0 0 70px rgba(0,0,0,.7)}.dr.open{transform:none}.drx{position:absolute;top:12px;right:12px;width:36px;height:36px;padding:0;border-radius:50%;font-size:1.3rem;line-height:1}.dk{font-size:.7rem;letter-spacing:.28em;color:#5fe39a;font-weight:700;margin:28px 0 8px}.dr h3{margin:0 0 6px;font-size:1.2rem;line-height:1.4}.wa{display:block;text-align:center;text-decoration:none;margin-top:16px;padding:14px;border-radius:14px;background:linear-gradient(135deg,#25d366,#128c4a);color:#04140a;font-weight:800;font-size:1.05rem;box-shadow:0 8px 28px rgba(37,211,102,.25)}.wa small{display:block;font-weight:600;opacity:.8;margin-top:2px;letter-spacing:.06em}.promo{margin-top:28px;border-radius:20px;padding:1px;background:linear-gradient(135deg,#f7d774,#a8741a 45%,#f7d774)}.pin{border-radius:19px;padding:24px 18px;background:radial-gradient(120% 90% at 0% 0%,#2a2108,#0c0a04 70%);text-align:center}.pk{color:#f7d774;font-size:.7rem;letter-spacing:.32em;font-weight:700}.pt{font-size:2.1rem;font-weight:900;letter-spacing:.04em;margin:8px 0 14px;background:linear-gradient(180deg,#fff2b8,#e0a93a);-webkit-background-clip:text;background-clip:text;color:transparent}.bd{display:flex;gap:10px;justify-content:center;margin-bottom:16px}.bd span{min-width:64px;padding:9px 0;border-radius:12px;border:1px solid #8a6a1f;background:#1a1405;color:#f7d774;font-weight:800;letter-spacing:.08em}.pin p{margin:0 0 18px;color:#e9dcae;line-height:1.55}.gold{display:block;text-decoration:none;padding:13px;border-radius:14px;background:linear-gradient(135deg,#f7d774,#d19a2a);color:#241a02;font-weight:800}.sfb{padding:8px 16px;border-radius:99px;font-size:.9rem;color:var(--mu)}.sfb.on{background:#13261b;color:var(--ink);border-color:var(--ac)}
 /* ===== PREMIUM LUXURY THEME ===== */
 :root{--bg:#06070a;--ink:#f4efe3;--mu:#9a9486;--ln:#262319;--fd:#0e0f13;--ac:#d6b25e;--er:#ff8a80;--gd:#e8c777;--gl:linear-gradient(135deg,#f6e3a1 0%,#d6b25e 48%,#a97c2a 100%)}
 body{background:radial-gradient(1100px 620px at 50% -12%,#201a0b 0%,rgba(6,7,10,0) 62%),radial-gradient(800px 500px at 100% 100%,#0f0d07 0%,rgba(6,7,10,0) 60%),var(--bg);background-color:var(--bg);font-family:"Avenir Next","SF Pro Display","Segoe UI",system-ui,sans-serif;letter-spacing:.005em;-webkit-font-smoothing:antialiased}
@@ -201,6 +202,40 @@ tbody tr:hover{background:rgba(214,178,94,.045)}
 ::selection{background:rgba(214,178,94,.35)}
 ::-webkit-scrollbar{height:8px;width:8px}
 ::-webkit-scrollbar-thumb{background:#2e2819;border-radius:99px}
+
+/* ===== Pay page: Cash App-style look (payer-facing only) ===== */
+body.pay{padding:0}
+body.pay main{max-width:460px}
+body.pay .panel.c{padding:26px 18px 30px;position:relative}
+body.pay .ava{width:46px;height:46px;border-radius:16px;background:#fff;color:#1aa34a;font-weight:800;font-size:1.3rem;display:flex;align-items:center;justify-content:center;position:absolute;top:18px;left:18px;font-family:"Avenir Next",system-ui,sans-serif}
+body.pay #s1{background:linear-gradient(165deg,#22c35e 0%,#15a04c 45%,#0c7a3a 100%);border:0;border-radius:30px;box-shadow:0 30px 70px rgba(0,0,0,.5);padding-top:70px}
+body.pay #s1:before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:42px;height:5px;background:rgba(255,255,255,.35);border-radius:99px}
+body.pay #s1 h1{color:#fff;text-align:center;font-size:1.5rem}
+body.pay #s1 .pill{display:block;width:max-content;margin:8px auto 0;background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.3);color:#fff}
+body.pay #s1 .meth{background:rgba(255,255,255,.14);border:0;border-radius:24px}
+body.pay #s1 .ico{background:#fff;color:#1aa34a;box-shadow:none}
+body.pay #s1 .meth strong,body.pay #s1 .meth .mu{color:#fff}
+body.pay #s1 .big{color:#fff}
+body.pay #s1 .usd{color:rgba(255,255,255,.85)}
+body.pay #s1 .kp button{background:rgba(255,255,255,.14);border:0;color:#fff;border-radius:20px}
+body.pay #s1 .kp button:active{background:rgba(255,255,255,.26)}
+body.pay #s1 .pri{background:#0b3d20;color:#fff;border-radius:22px}
+body.pay #s1 .pri:disabled{background:rgba(0,0,0,.22);color:rgba(255,255,255,.55)}
+body.pay #s1 .er{color:#ffe08a}
+body.pay #s2,body.pay #s3{background:#000;border:0;border-radius:30px;padding-top:72px}
+body.pay #s2 .ava,body.pay #s3 .ava{position:static;margin:0 auto 14px;width:64px;height:64px;border-radius:50%;background:#1aa34a;color:#fff;font-size:1.6rem}
+body.pay #s2 .cd{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff;font-size:.78rem}
+body.pay #s2 h1,body.pay #s3 h1{color:#fff}
+body.pay #s2 .big,body.pay #s3 .big{color:#fff;font-size:clamp(1.9rem,10vw,2.4rem)}
+body.pay #s2 .amtb{color:var(--gd)}
+body.pay #s2 .qr{position:relative;background:#fff}
+body.pay .qrb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:14px;background:#1aa34a;color:#fff;font:700 1.4rem/46px Georgia,serif;text-align:center;box-shadow:0 0 0 6px #fff}
+body.pay #s2 .cpy{background:#0b3d20;border:0;color:#7fe6a8;border-radius:18px;font-weight:700}
+body.pay #s2 #oc{box-shadow:0 10px 26px rgba(255,255,255,.12)}
+body.pay .advd{margin-top:14px;text-align:left}
+body.pay .advd summary{cursor:pointer;color:var(--mu);font-size:.85rem;padding:4px 0}
+body.pay .advd textarea,body.pay .advd button{margin-top:8px}
+body.pay #s2 h2,body.pay #s3 h2{color:#fff}
 @media(max-width:760px){.cont{padding:16px 14px 56px}h1{font-size:1.7rem}.stat b{font-size:1.6rem}}
 `;
 
@@ -228,23 +263,41 @@ async function btcUsd() {
 // Auto-verify: LNURL verify URL first, then Blink's public status query
 const tmo = () => AbortSignal.timeout(6000);
 async function getJson(url) { const r = await fetch(url, { signal: tmo() }); if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); }
-// Everything that was sent to BTC_ADDRESS, as one explorer sees it
-async function chainFrom(base) {
+// Wallet settings: the main address (above) and an optional second address the admin can switch to in Settings.
+let cfgMemo = null, cfgAt = 0;
+async function wallets() {
+  if (cfgMemo && Date.now() - cfgAt < 3000) return cfgMemo;
+  const h = {};
+  try { const f = (await db(["HGETALL", "cfg"])) || []; for (let i = 0; i < f.length; i += 2) h[f[i]] = f[i + 1]; } catch (e) {}
+  let list = [];
+  if (h.wl !== undefined) { try { list = JSON.parse(h.wl); } catch (e) {} }
+  else { // first run: start from SECOND_WALLET (or the old single second-wallet setting)
+    const raw = h.alt === undefined ? SECOND_WALLET : h.alt;
+    if (addrOk(raw) && raw !== BTC_ADDRESS) list = [{ id: "w1", name: "Second wallet", addr: raw }];
+  }
+  list = (Array.isArray(list) ? list : []).filter((x) => x && x.id && addrOk(x.addr) && x.addr !== BTC_ADDRESS);
+  const act0 = h.act !== undefined ? h.act : h.use === "alt" ? "w1" : "main";
+  const cur = act0 !== "main" ? list.find((x) => x.id === act0) : null;
+  cfgMemo = { main: BTC_ADDRESS, list, act: cur ? cur.id : "main", active: cur ? cur.addr : BTC_ADDRESS }; cfgAt = Date.now();
+  return cfgMemo;
+}
+// Everything that was sent to one address, as one explorer sees it
+async function chainFrom(base, addr) {
   const tip = +(await getJson(base + "/blocks/tip/height"));
   if (!(tip > 0)) throw new Error("bad tip height");
   const out = [], seen = new Set();
-  let page = await getJson(base + "/address/" + BTC_ADDRESS + "/txs"), pages = 0;
+  let page = await getJson(base + "/address/" + addr + "/txs"), pages = 0;
   for (;;) {
     for (const t of page) {
       if (seen.has(t.txid)) continue; seen.add(t.txid);
       const st = t.status || {};
       (t.vout || []).forEach((o, n) => {
-        if (o.scriptpubkey_address === BTC_ADDRESS) out.push({ txid: t.txid, vout: n, sats: o.value, conf: st.confirmed ? Math.max(1, tip - st.block_height + 1) : 0, bt: st.confirmed ? st.block_time : 0 });
+        if (o.scriptpubkey_address === addr) out.push({ addr, txid: t.txid, vout: n, sats: o.value, conf: st.confirmed ? Math.max(1, tip - st.block_height + 1) : 0, bt: st.confirmed ? st.block_time : 0 });
       });
     }
     const cf = page.filter((t) => t.status && t.status.confirmed), last = cf[cf.length - 1];
     if (cf.length < 25 || !last || ++pages >= 4 || last.status.block_time < Date.now() / 1000 - 4 * 3600) break;
-    page = await getJson(base + "/address/" + BTC_ADDRESS + "/txs/chain/" + last.txid);
+    page = await getJson(base + "/address/" + addr + "/txs/chain/" + last.txid);
   }
   return out;
 }
@@ -255,13 +308,18 @@ function chainState() {
   return chainBusy;
 }
 async function chainLoad() {
-  try { const c = await db(["GET", "btc:cache"]); if (c) return JSON.parse(c); } catch (e) {}
-  let res;
-  try { res = await Promise.all(SOURCES.map((b) => chainFrom(b))); } catch (e) { return null; }
-  const a = res[0], b = res[1], k = (o) => o.txid + ":" + o.vout, bm = new Map(b.map((o) => [k(o), o])), am = new Map(a.map((o) => [k(o), o])), out = [];
-  for (const o of a) { const p = bm.get(k(o)); out.push(Object.assign({}, o, { conf: p && p.sats === o.sats ? Math.min(o.conf, p.conf) : 0, bt: p ? Math.max(o.bt, p.bt) : o.bt })); }
-  for (const p of b) if (!am.has(k(p))) out.push(Object.assign({}, p, { conf: 0 }));
-  try { await db(["SET", "btc:cache", JSON.stringify(out), "EX", 15]); } catch (e) {}
+  const w = await wallets(), addrs = [w.main, ...w.list.map((x) => x.addr)], ck = "btc:cache:" + addrs.join("+");
+  try { const c = await db(["GET", ck]); if (c) return JSON.parse(c); } catch (e) {}
+  const out = [];
+  try {
+    for (const ad of addrs) {
+      const res = await Promise.all(SOURCES.map((b) => chainFrom(b, ad)));
+      const a = res[0], b = res[1], k = (o) => o.txid + ":" + o.vout, bm = new Map(b.map((o) => [k(o), o])), am = new Map(a.map((o) => [k(o), o]));
+      for (const o of a) { const p = bm.get(k(o)); out.push(Object.assign({}, o, { conf: p && p.sats === o.sats ? Math.min(o.conf, p.conf) : 0, bt: p ? Math.max(o.bt, p.bt) : o.bt })); }
+      for (const p of b) if (!am.has(k(p))) out.push(Object.assign({}, p, { conf: 0 }));
+    }
+  } catch (e) { return null; }
+  try { await db(["SET", ck, JSON.stringify(out), "EX", 15]); } catch (e) {}
   return out;
 }
 const needOf = (r) => r.need || confsFor(r.usd);
@@ -293,7 +351,7 @@ async function checkOne(r, ch) {
   const chain = ch === undefined ? await chainState() : ch;
   if (!chain) return;
   const now = Date.now(), t0 = Math.floor(r.t / 1000) - 3600, t1 = Math.floor(r.exp / 1000) + 3600, n = needOf(r), lost = new Set();
-  const hits = chain.filter((o) => o.sats === r.sats && (!o.bt || (o.bt >= t0 && o.bt <= t1))).sort((x, y) => y.conf - x.conf);
+  const hits = chain.filter((o) => (o.addr || BTC_ADDRESS) === (r.addr || BTC_ADDRESS) && o.sats === r.sats && (!o.bt || (o.bt >= t0 && o.bt <= t1))).sort((x, y) => y.conf - x.conf);
   for (const o of hits) {
     if (o.conf < n) continue;
     const key = "tx:" + o.txid + ":" + o.vout;
@@ -345,19 +403,20 @@ function payPage(slug, link, req) {
   const og = m('property="og:title"', "Pay " + name) + m('property="og:description"', link.note || "Secure payment with Bitcoin.") + m('property="og:type"', "website") + m('property="og:url"', url) + m('property="og:image"', img) + m('property="og:image:type"', "image/png") + m('property="og:image:width"', "1200") + m('property="og:image:height"', "630") + m('name="twitter:card"', "summary_large_image") + m('name="twitter:image"', img);
   const keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0"].map((k) => '<button type="button" data-k="' + k + '">' + k + "</button>").join("") +
     '<button type="button" data-k="b" aria-label="Delete"><svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#e8c777" stroke-width="2.4" stroke-linejoin="round"><path d="M11 2h19a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H11L2 13z"/><path d="M16 8l9 10M25 8l-9 10" stroke-linecap="round"/></svg></button>';
-  return head(name, og) +
-    '<section id="s1" class="panel c"><h1>Pay ' + esc(name) + '</h1><span class="pill">&#10003; Secure Payment</span>' +
+  const initial = esc((name.trim()[0] || "P").toUpperCase());
+  return head(name, og).replace('<body><main>', '<body class="pay"><main>') +
+    '<section id="s1" class="panel c"><div class="ava">' + initial + '</div><h1>Pay ' + esc(name) + '</h1><span class="pill">&#10003; Secure Payment</span>' +
     (link.note ? '<p class="mu" style="margin:10px 0 0">' + esc(link.note) + "</p>" : "") +
     '<div class="meth"><div class="ico">&#8383;</div><strong style="font-size:1.4rem">Bitcoin</strong><div class="mu">On-chain payment</div></div>' +
     '<div class="big" id="big">$0</div><div class="usd">USD</div><div class="kp" id="kp">' + keys + "</div>" +
     '<button class="pri" id="go" type="button" disabled>Pay</button><p class="er" id="er" role="alert" hidden></p></section>' +
-    '<section id="s2" class="panel c" hidden><span class="pill">&#10003; Secure Payment</span><div class="mu" style="margin-top:14px">You are paying</div>' +
-    '<div class="big" id="top"></div><div class="mu" style="margin-top:10px">Send exactly</div><div class="amtb" id="btcv"></div><div class="mu" id="rate" style="margin:6px 0 12px"></div>' +
-    '<div><span class="cd" id="cd">02:00:00</span></div><p class="mu" id="stt" aria-live="polite" style="margin:8px 0 0"></p>' +
-    '<div id="pay"><button class="sec" id="cpb" type="button">Copy amount</button>' +
-    '<div class="qr"><div id="qr"></div></div><p class="mu">Scan with your Bitcoin wallet and send on the <b>Bitcoin network</b> (on-chain).</p>' +
-    '<textarea id="adr" readonly aria-label="Bitcoin address" style="height:64px;margin-top:8px"></textarea><button class="sec" id="cpa" type="button">Copy address</button>' +
-    '<button class="pri" id="oc" type="button" style="background:#fff;color:#0a0f0d">Open Cash App</button>' +
+    '<section id="s2" class="panel c" hidden><span class="cd" id="cd">02:00:00</span><div class="ava ava2">' + initial + '</div><h1 style="text-align:center;font-size:1.3rem">Pay with Bitcoin</h1>' +
+    '<div class="big" id="top"></div><div class="mu" style="margin-top:10px">Send exactly</div><div class="amtb" id="btcv"></div><div class="mu" id="rate" style="margin:6px 0 12px"></div><div class="mu" style="margin-top:-6px">Bitcoin network (on-chain)</div>' +
+    '<p class="mu" id="stt" aria-live="polite" style="margin:14px 0 0"></p>' +
+    '<div id="pay"><button class="sec cpy" id="cpb" type="button">Copy invoice amount</button>' +
+    '<div class="qr"><div id="qr"></div><div class="qrb">&#8383;</div></div><p class="mu">Scan with your Bitcoin wallet and send on the <b>Bitcoin network</b> (on-chain).</p>' +
+    '<details class="advd"><summary>Pay manually with a wallet address</summary><textarea id="adr" readonly aria-label="Bitcoin address" style="height:64px;margin-top:8px"></textarea><button class="sec" id="cpa" type="button">Copy address</button></details>' +
+    '<button class="pri" id="oc" type="button" style="background:#fff;color:#0a0f0d;border-radius:99px">Open Cash App</button>' +
     '<a class="pri" id="ow" href="#" style="display:block;text-align:center;text-decoration:none">Open in wallet</a>' +
     '<h2>How to pay</h2><ol class="steps" style="text-align:left"><li>Open your Bitcoin wallet or exchange and choose <b>Send</b> (or Withdraw).</li><li>In Cash App: tap <b>Open Cash App</b> (the address is copied), go to Bitcoin, Send, then paste the address and enter the exact amount.</li><li>Choose the <b>Bitcoin (BTC)</b> network (on-chain).</li><li>Send the <b>exact amount</b> shown above. A different amount cannot be matched automatically.</li><li>Keep this page open. It shows <b>Payment complete</b> after the network confirms your payment.</li></ol>' +
     '<p class="mu">This invoice is valid for 2 hours. Each confirmation usually takes 10 to 20 minutes.</p></div>' +
@@ -368,13 +427,13 @@ function payPage(slug, link, req) {
 
 const ADMINJS = String.raw`var COLORS=${JSON.stringify(COLORS)},sel=0,D=null,tab='ov',sp={},ready=false;
 var $=function(i){return document.getElementById(i)};
-var TT={ov:'Overview',lk:'Payment Links',iv:'Invoices',wd:'Withdraw',us:'Sub Users'};
+var TT={ov:'Overview',lk:'Payment Links',iv:'Invoices',wd:'Withdraw',us:'Sub Users',set:'Settings'};
 function el(t,x,c){var e=document.createElement(t);if(x!=null)e.textContent=x;if(c)e.className=c;return e}
 function api(m,u,b){return fetch(u,{method:m,headers:{'Content-Type':'application/json'},body:b?JSON.stringify(b):undefined}).then(function(r){return r.json().then(function(j){if(!r.ok){var e=new Error(j.error||'Error');e.status=r.status;throw e}return j})})}
 function usd(c){return '$'+(c/100).toFixed(2)}
 function btn(p,t,fn){var b=el('button',t);b.type='button';b.onclick=function(){fn(b)};p.appendChild(b);return b}
 function go(t){
-if(!D||!TT[t]||(t==='us'&&D.me.role!=='admin'))t='ov';
+if(!D||!TT[t]||((t==='us'||t==='set')&&D.me.role!=='admin'))t='ov';
 tab=t;try{history.replaceState(null,'','#'+t)}catch(e){}
 for(var x in TT)$('sec-'+x).hidden=x!==t;
 [].forEach.call(document.querySelectorAll('.nv'),function(b){b.className='nv'+(b.getAttribute('data-t')===t?' on':'')});
@@ -389,14 +448,15 @@ for(k in bal)tot+=bal[k];if(a)tot-=(D.mwt||0);
 var paid=D.inv.filter(function(x){return x.st==='paid'}),
 pend=D.inv.filter(function(x){return stt(x)==='pending'}),
 expd=D.inv.filter(function(x){return stt(x)==='expired'});
-$('rl').textContent=a?'Main Panel':'Sub Panel';$('nv-us').hidden=!a;
+$('rl').textContent=a?'Main Panel':'Sub Panel';$('nv-us').hidden=!a;$('nv-set').hidden=!a;
 $('ttl').textContent=a?'Overview':'Hi, '+D.me.u;
 $('mu').textContent=D.me.u;
 var pv=D.me.pw||'';$('mpw').textContent=sp.me?(pv||'-'):(pv?'******':'-');$('mpb').textContent=sp.me?'Hide':'Show';$('mpb').hidden=!pv;
 /* ---- overview ---- */
 var C=$('cards');C.innerHTML='';
 function card(l,v,h){var d=el('div',null,'stat'+(h?' hi':''));d.appendChild(el('span',l,'mu'));d.appendChild(el('b',v));C.appendChild(d)}
-if(a){card('Total balance',usd(tot),1);card('Admin balance (fees)',usd(bal.admin||0));card('Sub users',String(D.users.length))}else card('My balance',usd(bal[D.me.u]||0),1);
+var subTot0=0;for(k in bal)if(k!=='admin')subTot0+=bal[k];
+if(a){card('Total balance',usd(tot),1);card('Sub users total bill',usd(subTot0));card('Sub users',String(D.users.length))}else card('My balance',usd(bal[D.me.u]||0),1);
 card('Paid invoices',String(paid.length));card('Pending',String(pend.length));card('Expired',String(expd.length));
 var R=$('rp');R.innerHTML='';
 var rec=paid.slice().sort(function(x,y){return y.pt-x.pt}).slice(0,8);
@@ -414,6 +474,16 @@ btn(MX,'Withdraw amount',function(){mainWd(tot,false)});btn(MX,'Withdraw all',fu
 var MT=$('mwt');MT.innerHTML='';
 if(!D.mw.length){var mr0=el('tr'),mc0=el('td','No main withdrawals yet.','mu');mc0.colSpan=4;mr0.appendChild(mc0);MT.appendChild(mr0)}
 D.mw.forEach(function(x){var r=el('tr');r.appendChild(el('td',new Date(x.t).toLocaleString()));r.appendChild(el('td',usd(x.amt)));r.appendChild(el('td',usd(x.after)));var c=el('td');btn(c,'Undo',function(){if(confirm('Undo this withdrawal? '+usd(x.amt)+' goes back to the main balance.'))askPw('Enter password to undo').then(function(p){if(p===null)return;api('POST','/api/mainwithdraw/undo',{id:x.id,pw:p}).then(load).catch(function(e){alert(e.message)})})});r.appendChild(c);MT.appendChild(r)})}
+if(a&&D.cfg){var CF=D.cfg;var all=[{id:'main',name:'Main wallet',addr:CF.main}].concat(CF.list);
+var cur=all.filter(function(w){return w.id===CF.act})[0]||all[0];$('wact').textContent=cur.addr;$('wkind').textContent=cur.name+' is active';
+var WL=$('wl');WL.innerHTML='';
+all.forEach(function(w){var c=el('div',null,'card');c.appendChild(el('strong',w.name||'Wallet'));var ad=el('div',w.addr,'mu');ad.style.cssText='word-break:break-all;margin:6px 0 10px;font-size:.85rem';c.appendChild(ad);
+var r=el('div',null,'btns');
+if(w.id===CF.act){r.appendChild(el('span','Active','b paid'))}else{btn(r,'Use this wallet',function(){setWallet({use:w.id},'Switch new invoices to "'+(w.name||'Wallet')+'"?\n'+w.addr)});
+if(w.id!=='main')btn(r,'Remove',function(){setWallet({del:w.id},'Remove "'+(w.name||'Wallet')+'" from the list?')})}
+c.appendChild(r);WL.appendChild(c)});
+var SV=$('wsv');SV.innerHTML='';
+btn(SV,'Add wallet',function(){var v=$('walt').value.trim();if(!v){alert('Enter an address.');return}setWallet({add:{name:$('wname').value.trim(),addr:v}},'Add this wallet?\n'+v)})}
 var UB=$('ub');UB.innerHTML='';
 if(a){var due=D.users.filter(function(u){return(bal[u.u]||0)>0}).sort(function(x,y){return bal[y.u]-bal[x.u]});
 if(!due.length){var ur2=el('tr'),uc2=el('td','Nothing is unpaid right now.','mu');uc2.colSpan=3;ur2.appendChild(uc2);UB.appendChild(ur2)}
@@ -455,7 +525,7 @@ c.appendChild(r);L.appendChild(c)});
 /* ---- unmatched bitcoin payments (main panel) ---- */
 $('cwarn').hidden=!(a&&D.chain===false);$('umw').hidden=!(a&&D.unm&&D.unm.length);
 var UM=$('umb');UM.innerHTML='';
-if(a)(D.unm||[]).forEach(function(o){var r=el('tr');r.appendChild(el('td',o.bt?new Date(o.bt*1000).toLocaleString():'Unconfirmed'));r.appendChild(el('td',(o.sats/1e8).toFixed(8),'pw'));r.appendChild(el('td',String(o.conf)));
+if(a)(D.unm||[]).forEach(function(o){var r=el('tr');r.appendChild(el('td',o.bt?new Date(o.bt*1000).toLocaleString():'Unconfirmed'));r.appendChild(el('td',(o.sats/1e8).toFixed(8),'pw'));r.appendChild(el('td',D.px?'~ $'+(o.sats/1e8*D.px).toFixed(2):'-'));r.appendChild(el('td',String(o.conf)));
 var c=el('td'),l=el('a',o.txid.slice(0,8)+'...'+o.txid.slice(-6));l.href='https://mempool.space/tx/'+o.txid;l.target='_blank';l.rel='noopener noreferrer';c.appendChild(l);r.appendChild(c);
 var c2=el('td');btn(c2,'Assign',function(){var id=prompt('Which invoice does this '+(o.sats/1e8).toFixed(8)+' BTC payment complete?\nPaste the invoice ID from the Invoice column:');if(!id)return;askPw('Enter password to assign this payment').then(function(p){if(p===null)return;api('POST','/api/btc/assign',{txid:o.txid,vout:o.vout,id:id.trim(),pw:p}).then(load).catch(function(e){alert(e.message)})})});r.appendChild(c2);UM.appendChild(r)});
 /* ---- invoices ---- */
@@ -500,6 +570,7 @@ g.fillStyle='#fff';g.fillRect(0,0,W,H);g.drawImage(q,64,64,512,512);
 g.textAlign='center';g.fillStyle='#111';g.font='bold 36px Georgia,serif';g.fillText(name.length>26?name.slice(0,25)+'...':name,W/2,650);
 g.fillStyle='#666';g.font='22px sans-serif';g.fillText(url.replace(/^https?:\/\//,''),W/2,700);
 var a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download=(name.replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'')||'link')+'-qr.png';document.body.appendChild(a);a.click();a.remove();h.remove()},80)}
+function setWallet(body,msg){if(!confirm(msg))return;askPw('Enter password to change wallets').then(function(p){if(p===null)return;api('POST','/api/settings/wallet',Object.assign({pw:p},body)).then(function(){if(body.add){$('walt').value='';$('wname').value=''}load()}).catch(function(e){alert(e.message)})})}
 function askPw(t){return new Promise(function(res){var o=el('div',null,'dov');o.style.cssText='display:flex;align-items:center;justify-content:center;padding:18px;z-index:80';
 var b=el('div',null,'card');b.style.cssText='width:min(360px,100%);margin:0';b.appendChild(el('h2',t));
 var i=el('input');i.type='password';i.placeholder='Password';i.autocomplete='off';b.appendChild(i);
@@ -541,15 +612,15 @@ const ADMIN = head("Admin", '<meta name="robots" content="noindex">').replace("<
   '<section id="login" hidden>' + BRAND + '<h1 style="margin-top:22px">Log in</h1><form id="lf"><input id="un" placeholder="Username (empty for admin)" autocomplete="username" autocapitalize="none" style="font-size:1rem;margin-bottom:10px"><input id="pw" type="password" placeholder="Password" autocomplete="current-password"><button class="pri" type="submit">Log in</button></form><p class="er" id="lerr" hidden></p></section>' +
   '<div id="app" class="shell" hidden>' +
   '<aside class="side" id="side">' + BRAND + '<span class="rl" id="rl"></span>' +
-  '<nav><button type="button" class="nv on" data-t="ov">Overview</button><button type="button" class="nv" data-t="lk">Payment Links</button><button type="button" class="nv" data-t="iv">Invoices</button><button type="button" class="nv" data-t="wd">Withdraw</button><button type="button" class="nv" id="nv-us" data-t="us" hidden>Sub Users</button></nav>' +
+  '<nav><button type="button" class="nv on" data-t="ov">Overview</button><button type="button" class="nv" data-t="lk">Payment Links</button><button type="button" class="nv" data-t="iv">Invoices</button><button type="button" class="nv" data-t="wd">Withdraw</button><button type="button" class="nv" id="nv-us" data-t="us" hidden>Sub Users</button><button type="button" class="nv" id="nv-set" data-t="set" hidden>Settings</button></nav>' +
   '<div class="me"><div class="mu">Logged in as</div><div>User: <b id="mu"></b></div><div>Password: <b class="pw" id="mpw"></b> <button type="button" id="mpb">Show</button></div><button type="button" id="out">Log out</button></div>' +
   '</aside>' +
   '<div class="cont"><div class="mbar"><button type="button" id="mb">Menu</button><strong id="mt">Overview</strong></div>' +
   '<section id="sec-ov"><h1 id="ttl">Overview</h1><div class="grid" id="cards"></div><h2>Recent payments</h2><div class="tw"><table><tbody id="rp"></tbody></table></div></section>' +
   '<section id="sec-lk" hidden><h1>Payment Links</h1><div class="card"><h2>Create a new link</h2><form id="nf"><input id="nm" placeholder="Link name (shown big on the preview)" maxlength="60"><input id="nt" placeholder="Short note (optional)" maxlength="100"><div class="sw" id="sw"></div><button class="pri" type="submit">Create link</button></form></div><h2>Your links</h2><div id="links"></div></section>' +
   '<section id="sec-iv" hidden><h1>Invoices</h1><p class="er" id="cwarn" hidden>The blockchain explorers cannot be reached right now, so payments cannot be verified. Nothing is marked paid or expired until they are back.</p>' +
-  '<div id="umw" hidden><h2>Unmatched Bitcoin payments</h2><p class="mu">These payments reached your address but match no open invoice (often a slightly different amount). Pick the invoice they belong to.</p><div class="tw"><table><thead><tr><th>Time</th><th>BTC</th><th>Confirmations</th><th>Transaction</th><th></th></tr></thead><tbody id="umb"></tbody></table></div><h2>All invoices</h2></div><div class="btns" id="sft" data-v="" style="margin:0 0 12px"><button type="button" class="sfb on" data-v="">All</button><button type="button" class="sfb" data-v="paid">Done</button><button type="button" class="sfb" data-v="pending">Processing</button><button type="button" class="sfb" data-v="expired">Expired</button></div><div class="flt"><select id="flt" aria-label="Filter by link"></select><select id="fuf" aria-label="Filter by user" hidden></select></div><div class="tw"><table><thead id="ih"></thead><tbody id="hist"></tbody></table></div></section>' +
-  '<section id="sec-wd" hidden><h1>Withdraw</h1><div class="big"><span class="mu" id="unl"></span><b id="unp"></b><span class="mu" id="unr"></span></div><div id="mwa" hidden><h2>Main balance</h2><div class="big"><span class="mu">Available to withdraw</span><b id="mwb"></b><div class="btns" id="mwx"></div></div><h2>Main withdraw history</h2><div class="tw"><table><thead><tr><th>Time</th><th>Amount</th><th>Left</th><th></th></tr></thead><tbody id="mwt"></tbody></table></div></div><div id="wda" hidden><h2>Unpaid by user</h2><div class="tw"><table><thead><tr><th>User</th><th>Unpaid</th><th></th></tr></thead><tbody id="ub"></tbody></table></div></div><h2>Withdraw history</h2><div class="tw"><table><thead id="wh"></thead><tbody id="wb"></tbody></table></div></section>' +
+  '<div id="umw" hidden><h2>Unmatched Bitcoin payments</h2><p class="mu">These payments reached your address but match no open invoice (often a slightly different amount). Pick the invoice they belong to.</p><div class="tw"><table><thead><tr><th>Time</th><th>BTC</th><th>USD / USDT</th><th>Confirmations</th><th>Transaction</th><th></th></tr></thead><tbody id="umb"></tbody></table></div><h2>All invoices</h2></div><div class="btns" id="sft" data-v="" style="margin:0 0 12px"><button type="button" class="sfb on" data-v="">All</button><button type="button" class="sfb" data-v="paid">Done</button><button type="button" class="sfb" data-v="pending">Processing</button><button type="button" class="sfb" data-v="expired">Expired</button></div><div class="flt"><select id="flt" aria-label="Filter by link"></select><select id="fuf" aria-label="Filter by user" hidden></select></div><div class="tw"><table><thead id="ih"></thead><tbody id="hist"></tbody></table></div></section>' +
+  '<section id="sec-set" hidden><h1>Settings</h1><div class="card"><h2>Receiving wallet</h2><p class="mu">New invoices ask for payment to the selected wallet. Everything else stays exactly the same. Invoices that were already created keep their own wallet and are still matched.</p><div class="big"><span class="mu">Active wallet</span><b id="wact" style="font-size:1rem;word-break:break-all"></b><span class="mu" id="wkind"></span></div></div><h2>Your wallets</h2><div id="wl"></div><div class="card"><h2>Add new wallet</h2><input id="wname" placeholder="Name (optional, e.g. Binance)" maxlength="30"><input id="walt" placeholder="Bitcoin address (starts with 1, 3 or bc1)" autocapitalize="none" autocomplete="off" spellcheck="false"><div class="btns" id="wsv"></div><p class="mu">Public address only. Never paste a seed phrase or private key here.</p></div></section><section id="sec-wd" hidden><h1>Withdraw</h1><div class="big"><span class="mu" id="unl"></span><b id="unp"></b><span class="mu" id="unr"></span></div><div id="mwa" hidden><h2>Main balance</h2><div class="big"><span class="mu">Available to withdraw</span><b id="mwb"></b><div class="btns" id="mwx"></div></div><h2>Main withdraw history</h2><div class="tw"><table><thead><tr><th>Time</th><th>Amount</th><th>Left</th><th></th></tr></thead><tbody id="mwt"></tbody></table></div></div><div id="wda" hidden><h2>Unpaid by user</h2><div class="tw"><table><thead><tr><th>User</th><th>Unpaid</th><th></th></tr></thead><tbody id="ub"></tbody></table></div></div><h2>Withdraw history</h2><div class="tw"><table><thead id="wh"></thead><tbody id="wb"></tbody></table></div></section>' +
   '<section id="sec-us" hidden><h1>Sub Users</h1><div class="card"><h2>Add user</h2><form id="uf"><input id="uu" placeholder="Username (a-z, 0-9, _)" maxlength="20" autocapitalize="none"><input id="up" placeholder="Password (6+ characters)" autocomplete="off"><input id="ufee" inputmode="decimal" placeholder="Extra % added to payer invoice (e.g. 30: $10 becomes $13)"><button class="pri" type="submit">Add user</button></form></div><h2>User list</h2><div class="tw"><table><thead><tr><th>User</th><th>Password</th><th>Fee</th><th>Unpaid balance</th><th></th></tr></thead><tbody id="ut"></tbody></table></div></section>' +
   '</div></div>' + DRAWER +
   tail('<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><script>' + ADMINJS + "</script>");
@@ -616,7 +687,8 @@ module.exports = async (req, res) => {
       const v = b.slug === "main" ? JSON.stringify({ name: "Add funds", owner: "admin" }) : await db(["HGET", "links", String(b.slug)]);
       const usd = Math.round(+b.usd * 100) / 100;
       if (!v || !(usd >= 1) || usd > 10000) return json(400, { error: "Enter an amount between $1 and $10,000." });
-      if (!addrOk(BTC_ADDRESS)) return json(500, { error: "The Bitcoin address is not set up correctly." });
+      const addr = (await wallets()).active;
+      if (!addrOk(addr)) return json(500, { error: "The Bitcoin address is not set up correctly." });
       const l = JSON.parse(v), price = await btcUsd(), t = Date.now();
       // sub-user links: the payer is asked for amount + the user's %; the sub user still gets exactly the amount selected
       let charge = usd, base = 0;
@@ -633,10 +705,10 @@ module.exports = async (req, res) => {
       for (let n = 0; used.has(sats) && n < 500; n++) sats += 1;
       if (used.has(sats)) return json(503, { error: "Too many open invoices. Please try again shortly." });
       const id = rand(12), btc = (sats / 1e8).toFixed(8);
-      const rec = { id, slug: String(b.slug), name: l.name, owner: l.owner || "admin", usd: charge, base, sats, btc, price, need: confsFor(charge), t, exp: t + INVOICE_MINUTES * 60 * 1000, st: "pending", conf: 0 };
+      const rec = { id, slug: String(b.slug), name: l.name, owner: l.owner || "admin", addr, usd: charge, base, sats, btc, price, need: confsFor(charge), t, exp: t + INVOICE_MINUTES * 60 * 1000, st: "pending", conf: 0 };
       await db(["HSET", "inv", id, JSON.stringify(rec)]);
       await db(["LPUSH", "ilog", id]); await db(["LTRIM", "ilog", 0, 499]);
-      return json(200, { id, usd: charge, addr: BTC_ADDRESS, sats, btc, price, exp: rec.exp, need: rec.need, uri: "bitcoin:" + BTC_ADDRESS + "?amount=" + btc });
+      return json(200, { id, usd: charge, addr, sats, btc, price, exp: rec.exp, need: rec.need, uri: "bitcoin:" + addr + "?amount=" + btc });
     }
     // ---- public: payment check (the pay page asks every 10s) ----
     if (path === "/api/check") {
@@ -684,7 +756,7 @@ module.exports = async (req, res) => {
         const mids = (await db(["LRANGE", "mwlog", 0, 299])) || [];
         mw = mids.length ? ((await db(["HMGET", "mwh", ...mids])) || []).filter(Boolean).map((x) => JSON.parse(x)) : [];
       }
-      return json(200, { me: { role: admin ? "admin" : "user", u: me, pw: admin ? PW : (urec && urec.pw) || "" }, bal: admin ? bal : { [me]: bal[me] || 0 }, users, links, inv: inv.map((x) => Object.assign({}, x, { usd: x.base > 0 ? x.base : x.usd, base: 0 }, admin ? {} : { btc: "", sats: 0 })), wd, mwt, mw, unm, chain: !!chain });
+      return json(200, { me: { role: admin ? "admin" : "user", u: me, pw: admin ? PW : (urec && urec.pw) || "" }, bal: admin ? bal : { [me]: bal[me] || 0 }, users, links, inv: inv.map((x) => Object.assign({}, x, { usd: x.base > 0 ? x.base : x.usd, base: 0 }, admin ? {} : { btc: "", sats: 0 })), wd, mwt, mw, cfg: admin ? await wallets() : null, px: admin && unm.length ? await btcUsd().catch(() => 0) : 0, unm, chain: !!chain });
     }
     if (path === "/api/withdraw" && req.method === "POST") {
       if (!admin) return json(403, { error: "Admin only" });
@@ -745,6 +817,34 @@ module.exports = async (req, res) => {
       if (!(await db(["SET", "tx:" + o.txid + ":" + o.vout, r.id, "NX"]))) return json(400, { error: "This payment was already used for another invoice." });
       await settle(r, true, { tx: o.txid, vout: o.vout, recv: o.sats, conf: o.conf, manual: true });
       return json(200, { ok: 1 });
+    }
+    if (path === "/api/settings/wallet" && req.method === "POST") {
+      if (!admin) return json(403, { error: "Admin only" });
+      if (!pwOk(b.pw)) return json(403, { error: "Wrong password." });
+      const w = await wallets(); let list = w.list.slice(), act = w.act;
+      if (b.add) {
+        const ad = String(b.add.addr || "").trim(), nm = String(b.add.name || "").trim().slice(0, 30);
+        if (!addrOk(ad)) return json(400, { error: "That is not a valid Bitcoin address." });
+        if (ad === BTC_ADDRESS || list.some((x) => x.addr === ad)) return json(400, { error: "That wallet is already in your list." });
+        if (list.length >= 5) return json(400, { error: "You can keep up to 5 extra wallets. Remove one first." });
+        list.push({ id: rand(6), name: nm || "Wallet " + (list.length + 2), addr: ad });
+      }
+      if (b.use !== undefined) {
+        const id = String(b.use);
+        if (id !== "main" && !list.some((x) => x.id === id)) return json(400, { error: "Wallet not found." });
+        act = id;
+      }
+      if (b.del !== undefined) {
+        const id = String(b.del), t = list.find((x) => x.id === id);
+        if (!t) return json(400, { error: "Wallet not found." });
+        if (act === id) return json(400, { error: "Switch to another wallet before removing this one." });
+        const ids = (await db(["LRANGE", "ilog", 0, 499])) || [], vs = ids.length ? (await db(["HMGET", "inv", ...ids])) || [] : [];
+        for (const x of vs) { if (!x) continue; const r = JSON.parse(x); if (r.st === "pending" && r.addr === t.addr && r.exp + 13 * 3600 * 1000 > Date.now()) return json(400, { error: "This wallet still has open invoices. Try again after they finish." }); }
+        list = list.filter((x) => x.id !== id);
+      }
+      await db(["HSET", "cfg", "wl", JSON.stringify(list), "act", act]);
+      cfgMemo = null;
+      return json(200, { ok: 1, cfg: await wallets() });
     }
     if (path === "/api/btc/unassign" && req.method === "POST") {
       if (!admin) return json(403, { error: "Admin only" });
