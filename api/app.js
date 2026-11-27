@@ -203,39 +203,52 @@ tbody tr:hover{background:rgba(214,178,94,.045)}
 ::-webkit-scrollbar{height:8px;width:8px}
 ::-webkit-scrollbar-thumb{background:#2e2819;border-radius:99px}
 
-/* ===== Pay page: Cash App-style look (payer-facing only) ===== */
-body.pay{padding:0}
-body.pay main{max-width:460px}
-body.pay .panel.c{padding:26px 18px 30px;position:relative}
-body.pay .ava{width:46px;height:46px;border-radius:16px;background:#fff;color:#1aa34a;font-weight:800;font-size:1.3rem;display:flex;align-items:center;justify-content:center;position:absolute;top:18px;left:18px;font-family:"Avenir Next",system-ui,sans-serif}
-body.pay #s1{background:linear-gradient(165deg,#22c35e 0%,#15a04c 45%,#0c7a3a 100%);border:0;border-radius:30px;box-shadow:0 30px 70px rgba(0,0,0,.5);padding-top:70px}
-body.pay #s1:before{content:"";position:absolute;top:10px;left:50%;transform:translateX(-50%);width:42px;height:5px;background:rgba(255,255,255,.35);border-radius:99px}
-body.pay #s1 h1{color:#fff;text-align:center;font-size:1.5rem}
-body.pay #s1 .pill{display:block;width:max-content;margin:8px auto 0;background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.3);color:#fff}
-body.pay #s1 .meth{background:rgba(255,255,255,.14);border:0;border-radius:24px}
-body.pay #s1 .ico{background:#fff;color:#1aa34a;box-shadow:none}
-body.pay #s1 .meth strong,body.pay #s1 .meth .mu{color:#fff}
-body.pay #s1 .big{color:#fff}
-body.pay #s1 .usd{color:rgba(255,255,255,.85)}
-body.pay #s1 .kp button{background:rgba(255,255,255,.14);border:0;color:#fff;border-radius:20px}
-body.pay #s1 .kp button:active{background:rgba(255,255,255,.26)}
-body.pay #s1 .pri{background:#0b3d20;color:#fff;border-radius:22px}
-body.pay #s1 .pri:disabled{background:rgba(0,0,0,.22);color:rgba(255,255,255,.55)}
-body.pay #s1 .er{color:#ffe08a}
-body.pay #s2,body.pay #s3{background:#000;border:0;border-radius:30px;padding-top:72px}
-body.pay #s2 .ava,body.pay #s3 .ava{position:static;margin:0 auto 14px;width:64px;height:64px;border-radius:50%;background:#1aa34a;color:#fff;font-size:1.6rem}
-body.pay #s2 .cd{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff;font-size:.78rem}
-body.pay #s2 h1,body.pay #s3 h1{color:#fff}
-body.pay #s2 .big,body.pay #s3 .big{color:#fff;font-size:clamp(1.9rem,10vw,2.4rem)}
-body.pay #s2 .amtb{color:var(--gd)}
-body.pay #s2 .qr{position:relative;background:#fff}
-body.pay .qrb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:14px;background:#1aa34a;color:#fff;font:700 1.4rem/46px Georgia,serif;text-align:center;box-shadow:0 0 0 6px #fff}
-body.pay #s2 .cpy{background:#0b3d20;border:0;color:#7fe6a8;border-radius:18px;font-weight:700}
-body.pay #s2 #oc{box-shadow:0 10px 26px rgba(255,255,255,.12)}
-body.pay .advd{margin-top:14px;text-align:left}
-body.pay .advd summary{cursor:pointer;color:var(--mu);font-size:.85rem;padding:4px 0}
-body.pay .advd textarea,body.pay .advd button{margin-top:8px}
-body.pay #s2 h2,body.pay #s3 h2{color:#fff}
+/* ===== Pay page: Cash App-style look (payer-facing only), one green theme, compact to fit one screen ===== */
+body.pay{padding:0;background:linear-gradient(165deg,#22c35e 0%,#15a04c 45%,#0c7a3a 100%);background-color:#15a04c;min-height:100vh}
+body.pay main{max-width:430px;margin:0 auto;width:100%}
+body.pay .panel.c{background:transparent;border:0;box-shadow:none;border-radius:0;padding:14px 16px 18px;position:relative}
+body.pay #s1:before{content:"";display:block;width:40px;height:4px;background:rgba(255,255,255,.35);border-radius:99px;margin:0 auto 10px}
+body.pay .hdr{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px}
+body.pay .ava{width:30px;height:30px;flex:0 0 auto;border-radius:10px;background:#fff;color:#1aa34a;font-weight:800;font-size:.95rem;display:flex;align-items:center;justify-content:center;font-family:"Avenir Next",system-ui,sans-serif}
+body.pay h1{color:#fff;text-align:center;margin:0}
+body.pay #s1 h1{font-size:1.15rem}
+body.pay #s2 h1{font-size:1.05rem}
+body.pay .pill{display:block;width:max-content;margin:6px auto 0;padding:4px 14px;font-size:.78rem;background:rgba(0,0,0,.18);border-color:rgba(255,255,255,.3);color:#fff}
+body.pay .meth{background:rgba(255,255,255,.14);border:0;border-radius:18px;padding:10px 14px;margin:10px 0}
+body.pay .ico{background:#fff;color:#1aa34a;box-shadow:none;width:40px;height:40px;font-size:1.3rem;line-height:40px;margin-bottom:4px}
+body.pay .meth strong{font-size:1.05rem}
+body.pay .meth strong,body.pay .meth .mu{color:#fff}
+body.pay .mu{color:rgba(255,255,255,.78)}
+body.pay .big{color:#fff;font-size:clamp(1.9rem,11vw,2.3rem);margin:2px 0}
+body.pay .usd{color:rgba(255,255,255,.85);margin-bottom:10px;font-size:.78rem}
+body.pay .kp{gap:7px}
+body.pay .kp button{height:46px;font-size:1.25rem;background:rgba(255,255,255,.16);border:0;color:#fff;border-radius:14px}
+body.pay .kp button:active{background:rgba(255,255,255,.28)}
+body.pay .pri{background:#0b3d20;color:#fff;border-radius:16px;margin-top:10px;padding:13px}
+body.pay .pri:disabled{background:rgba(0,0,0,.22);color:rgba(255,255,255,.55)}
+body.pay .er{color:#ffe08a;margin:6px 0 0;font-size:.85rem}
+body.pay #s2 .ava{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:1.05rem}
+body.pay #s2 .cd{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.2);border-color:rgba(255,255,255,.25);color:#fff;font-size:.72rem;padding:3px 12px}
+body.pay #s2 .amtb{color:#fff;font-weight:700}
+body.pay #s2 #rate{color:rgba(255,255,255,.78);margin:2px 0 8px}
+body.pay #s2 #stt{color:rgba(255,255,255,.9)}
+body.pay #s2 .mu{margin-top:0}
+body.pay .qr{position:relative;background:#fff;padding:10px;margin:10px auto}
+body.pay .qr svg,body.pay .qr img,body.pay .qr canvas{max-width:62vw;height:auto}
+body.pay .qrb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:12px;background:#1aa34a;color:#fff;font:700 1.15rem/38px Georgia,serif;text-align:center;box-shadow:0 0 0 5px #fff}
+body.pay #s2 .cpy{background:rgba(0,0,0,.25);border:0;color:#fff;border-radius:14px;padding:11px}
+body.pay #s2 #oc{background:#fff;color:#0a0f0d;border-radius:99px;padding:13px;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+body.pay #s2 #ow{background:rgba(0,0,0,.25);border-radius:99px;padding:11px}
+body.pay .adrb{margin-top:8px;text-align:left}
+body.pay .adrb textarea{background:rgba(0,0,0,.2);color:#fff;border-color:rgba(255,255,255,.25)}
+body.pay .adrb button{margin-top:6px}
+body.pay .steps{background:rgba(0,0,0,.18);border:0;color:rgba(255,255,255,.9);padding:10px 14px 10px 30px;font-size:.84rem}
+body.pay .steps li{margin:4px 0}
+body.pay .steps b{color:#fff}
+body.pay h2{color:#fff;font-size:.95rem;margin:16px 0 6px}
+body.pay .sec{border-color:rgba(255,255,255,.3);color:#fff}
+body.pay #s3 .ico{background:#fff;color:#1aa34a;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:10px auto 12px;font-size:1.7rem}
+body.pay #s3 h1{color:#fff}
 @media(max-width:760px){.cont{padding:16px 14px 56px}h1{font-size:1.7rem}.stat b{font-size:1.6rem}}
 `;
 
@@ -405,17 +418,17 @@ function payPage(slug, link, req) {
     '<button type="button" data-k="b" aria-label="Delete"><svg width="34" height="26" viewBox="0 0 34 26" fill="none" stroke="#e8c777" stroke-width="2.4" stroke-linejoin="round"><path d="M11 2h19a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H11L2 13z"/><path d="M16 8l9 10M25 8l-9 10" stroke-linecap="round"/></svg></button>';
   const initial = esc((name.trim()[0] || "P").toUpperCase());
   return head(name, og).replace('<body><main>', '<body class="pay"><main>') +
-    '<section id="s1" class="panel c"><div class="ava">' + initial + '</div><h1>Pay ' + esc(name) + '</h1><span class="pill">&#10003; Secure Payment</span>' +
+    '<section id="s1" class="panel c"><div class="hdr"><div class="ava">' + initial + '</div><h1>Pay ' + esc(name) + '</h1></div><span class="pill">&#10003; Secure Payment</span>' +
     (link.note ? '<p class="mu" style="margin:10px 0 0">' + esc(link.note) + "</p>" : "") +
     '<div class="meth"><div class="ico">&#8383;</div><strong style="font-size:1.4rem">Bitcoin</strong><div class="mu">On-chain payment</div></div>' +
     '<div class="big" id="big">$0</div><div class="usd">USD</div><div class="kp" id="kp">' + keys + "</div>" +
     '<button class="pri" id="go" type="button" disabled>Pay</button><p class="er" id="er" role="alert" hidden></p></section>' +
-    '<section id="s2" class="panel c" hidden><span class="cd" id="cd">02:00:00</span><div class="ava ava2">' + initial + '</div><h1 style="text-align:center;font-size:1.3rem">Pay with Bitcoin</h1>' +
+    '<section id="s2" class="panel c" hidden><span class="cd" id="cd">02:00:00</span><div class="hdr"><div class="ava ava2">' + initial + '</div><h1 style="font-size:1.2rem">Pay with Bitcoin</h1></div>' +
     '<div class="big" id="top"></div><div class="mu" style="margin-top:10px">Send exactly</div><div class="amtb" id="btcv"></div><div class="mu" id="rate" style="margin:6px 0 12px"></div><div class="mu" style="margin-top:-6px">Bitcoin network (on-chain)</div>' +
     '<p class="mu" id="stt" aria-live="polite" style="margin:14px 0 0"></p>' +
     '<div id="pay"><button class="sec cpy" id="cpb" type="button">Copy invoice amount</button>' +
     '<div class="qr"><div id="qr"></div><div class="qrb">&#8383;</div></div><p class="mu">Scan with your Bitcoin wallet and send on the <b>Bitcoin network</b> (on-chain).</p>' +
-    '<details class="advd"><summary>Pay manually with a wallet address</summary><textarea id="adr" readonly aria-label="Bitcoin address" style="height:64px;margin-top:8px"></textarea><button class="sec" id="cpa" type="button">Copy address</button></details>' +
+    '<div class="adrb"><div class="mu" style="margin:10px 0 4px">Or pay manually to this address:</div><textarea id="adr" readonly aria-label="Bitcoin address" style="height:58px"></textarea><button class="sec" id="cpa" type="button">Copy address</button></div>' +
     '<button class="pri" id="oc" type="button" style="background:#fff;color:#0a0f0d;border-radius:99px">Open Cash App</button>' +
     '<a class="pri" id="ow" href="#" style="display:block;text-align:center;text-decoration:none">Open in wallet</a>' +
     '<h2>How to pay</h2><ol class="steps" style="text-align:left"><li>Open your Bitcoin wallet or exchange and choose <b>Send</b> (or Withdraw).</li><li>In Cash App: tap <b>Open Cash App</b> (the address is copied), go to Bitcoin, Send, then paste the address and enter the exact amount.</li><li>Choose the <b>Bitcoin (BTC)</b> network (on-chain).</li><li>Send the <b>exact amount</b> shown above. A different amount cannot be matched automatically.</li><li>Keep this page open. It shows <b>Payment complete</b> after the network confirms your payment.</li></ol>' +
